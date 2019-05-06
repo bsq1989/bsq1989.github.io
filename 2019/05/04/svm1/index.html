@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Support Vector Machine 支持向量机 （1）简介支持向量机是基于统计的经典分类算法，是一种线性分类模型。虽然是一种线性模型，经过核技巧，也即核函数扩展以后，适用于非线性场景 基本概念1 线性可分支持向量机 给定线性可分的训练数据集，通过间隔最大化或等价的求解相应的凸二次优化问题 学习得到的分离超平面为  y=w^**x+b^*   以及相应的分类决策函数  f(x)=sign(">
+<meta name="description" content="Support Vector Machine 支持向量机 （1）简介支持向量机是基于统计的经典分类算法，是一种线性分类模型。虽然是一种线性模型，经过核技巧，也即核函数扩展以后，适用于非线性场景 基本概念1 线性可分支持向量机给定线性可分的训练数据集，通过间隔最大化或等价的求解相应的凸二次优化问题 学习得到的分离超平面为  y=w^* \cdot x+b^*以及相应的分类决策函数  f(x)=sig">
 <meta name="keywords" content="线性模型,基本概念,svm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Support Vector Machine 支持向量机 （1）">
 <meta property="og:url" content="http://yoursite.com/2019/05/04/svm1/index.html">
 <meta property="og:site_name" content="Bao‘s Notes">
-<meta property="og:description" content="Support Vector Machine 支持向量机 （1）简介支持向量机是基于统计的经典分类算法，是一种线性分类模型。虽然是一种线性模型，经过核技巧，也即核函数扩展以后，适用于非线性场景 基本概念1 线性可分支持向量机 给定线性可分的训练数据集，通过间隔最大化或等价的求解相应的凸二次优化问题 学习得到的分离超平面为  y=w^**x+b^*   以及相应的分类决策函数  f(x)=sign(">
+<meta property="og:description" content="Support Vector Machine 支持向量机 （1）简介支持向量机是基于统计的经典分类算法，是一种线性分类模型。虽然是一种线性模型，经过核技巧，也即核函数扩展以后，适用于非线性场景 基本概念1 线性可分支持向量机给定线性可分的训练数据集，通过间隔最大化或等价的求解相应的凸二次优化问题 学习得到的分离超平面为  y=w^* \cdot x+b^*以及相应的分类决策函数  f(x)=sig">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-05T02:20:04.000Z">
+<meta property="og:updated_time" content="2019-05-06T14:47:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Support Vector Machine 支持向量机 （1）">
-<meta name="twitter:description" content="Support Vector Machine 支持向量机 （1）简介支持向量机是基于统计的经典分类算法，是一种线性分类模型。虽然是一种线性模型，经过核技巧，也即核函数扩展以后，适用于非线性场景 基本概念1 线性可分支持向量机 给定线性可分的训练数据集，通过间隔最大化或等价的求解相应的凸二次优化问题 学习得到的分离超平面为  y=w^**x+b^*   以及相应的分类决策函数  f(x)=sign(">
+<meta name="twitter:description" content="Support Vector Machine 支持向量机 （1）简介支持向量机是基于统计的经典分类算法，是一种线性分类模型。虽然是一种线性模型，经过核技巧，也即核函数扩展以后，适用于非线性场景 基本概念1 线性可分支持向量机给定线性可分的训练数据集，通过间隔最大化或等价的求解相应的凸二次优化问题 学习得到的分离超平面为  y=w^* \cdot x+b^*以及相应的分类决策函数  f(x)=sig">
 
 
 
@@ -353,89 +353,70 @@
 
       
         <h1 id="Support-Vector-Machine-支持向量机-（1）"><a href="#Support-Vector-Machine-支持向量机-（1）" class="headerlink" title="Support Vector Machine 支持向量机 （1）"></a>Support Vector Machine 支持向量机 （1）</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><pre><code>支持向量机是基于统计的经典分类算法，是一种线性分类模型。虽然是一种线性模型，经过核技巧，也即核函数扩展以后，适用于非线性场景
-</code></pre><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="1-线性可分支持向量机"><a href="#1-线性可分支持向量机" class="headerlink" title="1 线性可分支持向量机"></a>1 <em>线性可分支持向量机</em></h3><blockquote>
-<p>给定线性可分的训练数据集，通过<em>间隔最大化</em>或<em>等价的求解相应的凸二次优化问题</em> 学习得到的分离超平面为</p>
+</code></pre><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="1-线性可分支持向量机"><a href="#1-线性可分支持向量机" class="headerlink" title="1 线性可分支持向量机"></a>1 <em>线性可分支持向量机</em></h3><p>给定线性可分的训练数据集，通过<em>间隔最大化</em>或<em>等价的求解相应的凸二次优化问题</em> 学习得到的分离超平面为</p>
 <script type="math/tex; mode=display">
-y=w^**x+b^*</script><p>   以及相应的分类决策函数</p>
+y=w^* \cdot x+b^*</script><p>以及相应的分类决策函数</p>
 <script type="math/tex; mode=display">
-f(x)=sign(w^**x+b^*)</script><a id="more"></a>
+f(x)=sign(w^*\cdot x+b^*)</script><a id="more"></a>
 <h3 id="2-间隔的概念"><a href="#2-间隔的概念" class="headerlink" title="2 间隔的概念"></a>2 <em>间隔的概念</em></h3><ul>
-<li>1 函数间隔<br>在超平面确定的情况之下，设超平面的解析式为 $w<em>x+b$, 那么$|wx+b|$ 可以表示点距离该超平面的远近，而对于分类问题，$y\in\{1,-1\}$，与$w</em>x+b$符号一致，所以可以用$\gamma=y<em>(w</em>x+b)$ 表示分类正确性与确信度，也即函数间隔(<em>function margin</em>)。由此可得，对于数据集$\Gamma\in\{x_i,y_i\},i=1..n$;$(x_i,y_i)$的函数间隔表达为<script type="math/tex; mode=display">
-\gamma_i=y_i*(w*x_i+b)\tag{1}</script>超平面关于数据集$\Gamma$的函数间隔表达为<script type="math/tex; mode=display">
-\gamma=\min_{1\leq x\leq n}\ y_i*(w*x_i+b)\tag{2}</script></li>
-</ul>
-</blockquote>
-<ul>
-<li><p>2 几何间隔</p>
-<blockquote>
-<p>通过函数间隔的定义，可知，如果成比例的改变$w,b$两个参数，函数间隔增加了，但是超平面却没有变，因此，必须对函数间隔施加一定的约束，这里选择归一化参数，使$||w||=1$,从而使间隔变为确定的。此种情况下的间隔称为几何间隔。同样的，对于数据集中某一点$(x_i,y_i)$,集合间隔为</p>
+<li><p>1 函数间隔<br>函数解析式为$y=w\cdot x+b$,那么，$|w\cdot x+b|$可以表示$x$到平面的距离，对于二分类问题，$y \in (1,-1)$,且与$w\cdot x+b$同符号，那么$y(w\cdot x+b)$可表示点到分类超平面的距离，也就表示了该点的分类正确性与置信度，也即函数间隔、function margin。由此可得，对于数据集</p>
+<script type="math/tex; mode=display">
+\Gamma\in\{x_i,y_i\},i=1..n;</script><p>$(x_i,y_i)$的函数间隔表达为</p>
+<script type="math/tex; mode=display">
+\gamma_i=y_i(w\cdot x_i+b)\tag{1}</script><p>超平面关于数据集$\Gamma$的函数间隔表达为</p>
+<script type="math/tex; mode=display">
+\gamma=\min_{1\leq x\leq n}\ y_i(w\cdot x_i+b)\tag{2}</script></li>
+<li><p>2 几何间隔<br>通过函数间隔的定义，可知，如果成比例的改变$w,b$两个参数，函数间隔增加了，但是超平面却没有变，因此，必须对函数间隔施加一定的约束，这里选择归一化参数，使$||w||=1$,从而使间隔变为确定的。此种情况下的间隔称为几何间隔。同样的，对于数据集中某一点$(x_i,y_i)$,集合间隔为</p>
 <script type="math/tex; mode=display">
 \gamma^g_i=\frac{\gamma}{||w||} \tag{3}</script><p>超平面关于数据集$\Gamma$的函数间隔为</p>
-<script type="math/tex; mode=display">\gamma^g=\frac{\gamma}{||w||}=\min_{1\leq x\leq n}\ y_i*(\frac{w*x_i}{||w||}+\frac{b}{||w||})\tag{4}</script></blockquote>
-</li>
-<li><p>3 间隔最大化</p>
-<blockquote>
-<p>通过上述定义可知，间隔表示分类的置信度，那么，支持向量机的基本思想就是求解几何间隔最大化的分离超平面，其直观解释为，对训练数据集找到几何间隔最大超平面意味着以最大的置信度，对训练数据集进行分类。引用前述间隔的解析式，可得如下最优化问题</p>
+<script type="math/tex; mode=display">\gamma^g=\frac{\gamma}{||w||}=\min_{1\leq x\leq n}\ y_i(\frac{w\cdot x_i}{||w||}+\frac{b}{||w||})\tag{4}</script></li>
+<li><p>3 间隔最大化<br>通过上述定义可知，间隔表示分类的置信度，那么，支持向量机的基本思想就是求解几何间隔最大化的分离超平面，其直观解释为，对训练数据集找到几何间隔最大超平面意味着以最大的置信度，对训练数据集进行分类。引用前述间隔的解析式，可得如下最优化问题</p>
 <script type="math/tex; mode=display">
 \max_{w,b}\quad \gamma^g\\
-s.t\quad y_i*(\frac{w}{||w||}*x_i+\frac{b}{||w||})\geq\gamma^g\tag{5}</script></blockquote>
-</li>
-<li>4 一些推倒<blockquote>
-<p>根据公式(4)，可将(5)转换为如下形式</p>
-<script type="math/tex; mode=display">
+s.t\quad y_i(\frac{w}{||w||}\cdot x_i+\frac{b}{||w||})\geq\gamma^g\tag{5}</script></li>
+<li>4 一些推倒<br>根据公式(4)，可将(5)转换为如下形式<script type="math/tex; mode=display">
 \max_{w,b}\qquad \frac{\gamma}{||w||} \\
-s.t.\qquad y_i*(w*x_i+b)\geq\gamma</script><p>通过观察上式，只要$w,b$ 成比例的改变，$\gamma$ 并不影响上式中的不等式约束，因此，将$\gamma$归一化为1，可得如下结果</p>
-<script type="math/tex; mode=display">
+s.t.\qquad y_i(w\cdot x_i+b)\geq\gamma</script>通过观察上式，只要$w,b$ 成比例的改变，$\gamma$ 并不影响上式中的不等式约束，因此，将$\gamma$归一化为1，可得如下结果<script type="math/tex; mode=display">
 \max_{w,b}\qquad \frac{1}{||w||} \\
-s.t.\qquad y_i*(w*x_i+b)\geq1</script><p>又因为$\max \frac{1}{||w||}$与$\min \frac{1}{2}||w||^2$等价，所以得如下结果</p>
-<script type="math/tex; mode=display">
+s.t.\qquad y_i(w\cdot x_i+b)\geq1</script>又因为$\max \frac{1}{||w||}$与$\min \frac{1}{2}||w||^2$等价，所以得如下结果<script type="math/tex; mode=display">
 \min_{w,b}\qquad \frac{1}{2}||w||^2 \\
-s.t. \qquad y_i*(w*x_i+b)\geq1 \tag{6}</script><h3 id="3-线性可分支持向量机-的学习算法"><a href="#3-线性可分支持向量机-的学习算法" class="headerlink" title="3 线性可分支持向量机 的学习算法"></a>3 <em>线性可分支持向量机</em> 的学习算法</h3><p>由函数间隔的概念，可得出线性可分支持向量机的学习算法—最大间隔法，也即通过学习输入的训练数据，学习出满足最大间隔要求的分离超平面，进而确定分类器的参数$w,b$。其输入输出如下：<br>输入：线性可分训练数据集$\Gamma=\{(x_1,y_1),(x_2,y_2),….,(x_n,y_n)\}$,其中$x_i \in R^n,y\in\{1,-1\}$。<br>输出：最大分离超平面和决策函数<br>（1）构造约束最优化问题如下：</p>
-<script type="math/tex; mode=display">
+s.t. \qquad y_i(w\cdot x_i+b)\geq1 \tag{6}</script><h3 id="3-线性可分支持向量机-的学习算法"><a href="#3-线性可分支持向量机-的学习算法" class="headerlink" title="3 线性可分支持向量机 的学习算法"></a>3 <em>线性可分支持向量机</em> 的学习算法</h3>由函数间隔的概念，可得出线性可分支持向量机的学习算法—最大间隔法，也即通过学习输入的训练数据，学习出满足最大间隔要求的分离超平面，进而确定分类器的参数$w,b$。其输入输出如下：<br>输入：线性可分训练数据集$\Gamma=\{(x_1,y_1),(x_2,y_2),….,(x_n,y_n)\}$,其中$x_i \in R^n,y\in\{1,-1\}$。<br>输出：最大分离超平面和决策函数<br>（1）构造约束最优化问题如下：<script type="math/tex; mode=display">
 \min_{w,b}\qquad \frac{1}{2}||w||^2 \\
-s.t. \qquad y_i*(w*x_i+b)\geq1 \tag{7}</script><p>(2) 求解最优化问题，得到最优解$w^<em>,b^</em>$,得到分离超平面</p>
-<script type="math/tex; mode=display">
-w^**x+b^*=0\tag{8}</script><p>以及决策函数</p>
-<script type="math/tex; mode=display">
-f(x)=sign(w^*x+b^*)\tag{9}</script><h2 id="对偶求解推倒"><a href="#对偶求解推倒" class="headerlink" title="对偶求解推倒"></a>对偶求解推倒</h2><p>对于最优化问题(7)，应用拉格朗日对偶性，通过求取对偶问题的解来求原问题的解。<br>首先，构建原问题的拉格朗日函数，如下：</p>
-<script type="math/tex; mode=display">
-L(w,b,a)=\frac{1}{2}||w||^2+\sum_{i=1}^{N}a_i-\sum_{i=1}^{N}a_i*(y_i*(w*x_i+b))\tag{10}\\
-a_i\geq0</script><p>根据拉格朗日对偶性，原始问题的对偶问题为极大极小问题，如下：</p>
-<script type="math/tex; mode=display">
-\max_{a}\min_{w,b}L(w,b,a)\tag{11}</script><h3 id="1-求-min-w-b-L-w-b-a"><a href="#1-求-min-w-b-L-w-b-a" class="headerlink" title="(1) 求$\min_{w,b}L(w,b,a)$"></a>(1) 求$\min_{w,b}L(w,b,a)$</h3><p>将拉格朗日函数$L(w,b,a)$分别对$w,b$求偏倒数得如下结果：  </p>
-<script type="math/tex; mode=display">
+s.t. \qquad y_i(w\cdot x_i+b)\geq1 \tag{7}</script>(2) 求解最优化问题，得到最优解$w^\ast,b^\ast$,得到分离超平面<script type="math/tex; mode=display">
+w^*\cdot x+b^*=0\tag{8}</script>以及决策函数<script type="math/tex; mode=display">
+f(x)=sign(w^*\cdot x+b^*)\tag{9}</script><h2 id="对偶求解推倒"><a href="#对偶求解推倒" class="headerlink" title="对偶求解推倒"></a>对偶求解推倒</h2>对于最优化问题(7)，应用拉格朗日对偶性，通过求取对偶问题的解来求原问题的解。<br>首先，构建原问题的拉格朗日函数，如下：<script type="math/tex; mode=display">
+L(w,b,a)=\frac{1}{2}||w||^2+\sum_{i=1}^{N}a_i-\sum_{i=1}^{N}a_i*(y_i(w\cdot x_i+b))\tag{10}\\
+a_i\geq0</script>根据拉格朗日对偶性，原始问题的对偶问题为极大极小问题，如下：<script type="math/tex; mode=display">
+\max_{a}\min_{w,b}L(w,b,a)\tag{11}</script><h3 id="1-求-min-w-b-L-w-b-a"><a href="#1-求-min-w-b-L-w-b-a" class="headerlink" title="(1) 求$\min_{w,b}L(w,b,a)$"></a>(1) 求$\min_{w,b}L(w,b,a)$</h3>将拉格朗日函数$L(w,b,a)$分别对$w,b$求偏倒数得如下结果：  <script type="math/tex; mode=display">
 \nabla_wL(w,b,a)=w-\sum_{i=1}^{N}a_iy_yx_i=0</script><script type="math/tex; mode=display">
-\nabla_bL(w,b,a)=\sum_{i=1}^{N}a_iy_i=0</script><p>由以上得出如下结果：</p>
-<script type="math/tex; mode=display">
+\nabla_bL(w,b,a)=\sum_{i=1}^{N}a_iy_i=0</script>由以上得出如下结果：<script type="math/tex; mode=display">
 w=\sum_{i=1}^{N}a_iy_yx_i\\
-\sum_{i=1}^{N}a_iy_yx_i=0</script><p>将上述结果带入到拉格朗日函数$L(w,b,a)$得：</p>
-<script type="math/tex; mode=display">
+\sum_{i=1}^{N}a_iy_yx_i=0</script>将上述结果带入到拉格朗日函数$L(w,b,a)$得：<script type="math/tex; mode=display">
 \min_{w,b}L(w,b,a)=\frac{1}{2}\sum_{i=1}^{N}a_iy_ix_i*\sum_{j=1}^{N}a_jy_jx_j+\sum_{i=1}^{N}a_i-\sum_{i=1}^{N}a_i*(y_i*(\sum_{j=1}^{N}a_jy_jx_j*x_i+b))\\
 =\frac{1}{2}\sum_{i=1}^{N}\sum_{j=1}^{N}a_ia_jy_iy_jx_ix_j+\sum_{i=1}^{N}a_i-\sum_{i=1}^{N}a_iy_ib-\sum_{i=1}^{N}\sum_{j=1}^{N}a_ia_jy_iy_jx_ix_j\\
 =-\frac{1}{2}\sum_{i=1}^{N}\sum_{j=1}^{N}a_ia_jy_iy_jx_ix_j+\sum_{i=1}^{N}a_i</script><h3 id="2-对-min-w-b-L-w-b-a-求解对-a-的极大，即为对偶问题："><a href="#2-对-min-w-b-L-w-b-a-求解对-a-的极大，即为对偶问题：" class="headerlink" title="(2) 对$\min_{w,b}L(w,b,a)$求解对$a$的极大，即为对偶问题："></a>(2) 对$\min_{w,b}L(w,b,a)$求解对$a$的极大，即为对偶问题：</h3><script type="math/tex; mode=display">
 \max_{a} -\frac{1}{2}\sum_{i=1}^{N}\sum_{j=1}^{N}a_ia_jy_iy_jx_ix_j+\sum_{i=1}^{N}a_i\\
 s.t.\qquad \sum_{i=1}^{N}a_iy_i=0\\
-\qquad \qquad a_i\geq0\tag{12}</script></blockquote>
-</li>
+\qquad \qquad a_i\geq0\tag{12}</script></li>
 </ul>
 <h3 id="3-将上述问题转为极小问题"><a href="#3-将上述问题转为极小问题" class="headerlink" title="(3) 将上述问题转为极小问题"></a>(3) 将上述问题转为极小问题</h3><script type="math/tex; mode=display">
 \min_{a} \frac{1}{2}\sum_{i=1}^{N}\sum_{j=1}^{N}a_ia_jy_iy_jx_ix_j-\sum_{i=1}^{N}a_i\\
 s.t.\qquad \sum_{i=1}^{N}a_iy_i=0\\
-\qquad \qquad a_i\geq0\tag{13}</script><h3 id="4-求解最优化极小问题-13-得到的解-a-后，根据对偶问题KKT条件，可求得原问题的最优解-w-b-过程如下"><a href="#4-求解最优化极小问题-13-得到的解-a-后，根据对偶问题KKT条件，可求得原问题的最优解-w-b-过程如下" class="headerlink" title="(4) 求解最优化极小问题(13)得到的解$a^$后，根据对偶问题KKT条件，可求得原问题的最优解$w^,b^*$,过程如下"></a>(4) 求解最优化极小问题(13)得到的解$a^<em>$后，根据对偶问题KKT条件，可求得原问题的最优解$w^</em>,b^*$,过程如下</h3><p>由KKT条件，可得如下表达式：</p>
+\qquad \qquad a_i\geq0\tag{13}</script><h3 id="4-求解最优化极小问题-13-得到的解-a-ast-后，根据对偶问题KKT条件，可求得原问题的最优解-w-ast-b-ast-过程如下"><a href="#4-求解最优化极小问题-13-得到的解-a-ast-后，根据对偶问题KKT条件，可求得原问题的最优解-w-ast-b-ast-过程如下" class="headerlink" title="(4) 求解最优化极小问题(13)得到的解$a^\ast$后，根据对偶问题KKT条件，可求得原问题的最优解$w^\ast$,$b^\ast$,过程如下"></a>(4) 求解最优化极小问题(13)得到的解$a^\ast$后，根据对偶问题KKT条件，可求得原问题的最优解$w^\ast$,$b^\ast$,过程如下</h3><p>由KKT条件，可得如下表达式：</p>
 <script type="math/tex; mode=display">
 \nabla L_w(w^*,b^*,a^*)=w^*-\sum_{i=1}^{N}a_i^*y_ix_i=0\\
 \nabla L_b(w^*,b^*,a^*)=\sum_{i=1}^{N}a^*_iy_i=0\\
-a^*_i*(y_i(w^**x_i+b)-1)=0\quad i=1.....N\\
-y_i(w^**x_i+b)-1\geq0\quad i=1.....N\\
+a^*_i*(y_i(w^*\cdot x_i+b)-1)=0\quad i=1.....N\\
+y_i(w^*\cdot x_i+b)-1\geq0\quad i=1.....N\\
 a^*_i\geq0\quad i=1....N</script><p>由上述表达式，可以得出原问题最优解如下：  </p>
 <script type="math/tex; mode=display">
 w^*=\sum_{i=1}^{N}a_i^*y_ix_i\\
-\because y_i(w^**x_y+b)-1=0\\
+\because y_i(w^*\cdot x_y+b)-1=0\\
 \therefore b=y_i-\sum_{j=1}^{N}a_j^*y_j(x_j\cdot x_i)\tag{14}</script><p>由此，分离超平面可以表示为</p>
 <script type="math/tex; mode=display">
 \sum_{i=1}^{N}a_i^*y_i(x_i\cdot x)+b=0</script><p>决策函数可以表示为</p>
 <script type="math/tex; mode=display">
-f(x)=sign(\sum_{i=1}^{N}a_i^*y_i(x_i\cdot x)+b=0)</script>
+f(x)=sign(\sum_{i=1}^{N}a_i^*y_i(x_i\cdot x)+b)</script>
       
     </div>
     
@@ -609,7 +590,7 @@ f(x)=sign(\sum_{i=1}^{N}a_i^*y_i(x_i\cdot x)+b=0)</script>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Support-Vector-Machine-支持向量机-（1）"><span class="nav-number">1.</span> <span class="nav-text">Support Vector Machine 支持向量机 （1）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">1.2.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-线性可分支持向量机"><span class="nav-number">1.2.1.</span> <span class="nav-text">1 线性可分支持向量机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-间隔的概念"><span class="nav-number">1.2.2.</span> <span class="nav-text">2 间隔的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-线性可分支持向量机-的学习算法"><span class="nav-number">1.2.3.</span> <span class="nav-text">3 线性可分支持向量机 的学习算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对偶求解推倒"><span class="nav-number">1.3.</span> <span class="nav-text">对偶求解推倒</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-求-min-w-b-L-w-b-a"><span class="nav-number">1.3.1.</span> <span class="nav-text">(1) 求$\min_{w,b}L(w,b,a)$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-对-min-w-b-L-w-b-a-求解对-a-的极大，即为对偶问题："><span class="nav-number">1.3.2.</span> <span class="nav-text">(2) 对$\min_{w,b}L(w,b,a)$求解对$a$的极大，即为对偶问题：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-将上述问题转为极小问题"><span class="nav-number">1.3.3.</span> <span class="nav-text">(3) 将上述问题转为极小问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-求解最优化极小问题-13-得到的解-a-后，根据对偶问题KKT条件，可求得原问题的最优解-w-b-过程如下"><span class="nav-number">1.3.4.</span> <span class="nav-text">(4) 求解最优化极小问题(13)得到的解$a^$后，根据对偶问题KKT条件，可求得原问题的最优解$w^,b^*$,过程如下</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Support-Vector-Machine-支持向量机-（1）"><span class="nav-number">1.</span> <span class="nav-text">Support Vector Machine 支持向量机 （1）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">1.2.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-线性可分支持向量机"><span class="nav-number">1.2.1.</span> <span class="nav-text">1 线性可分支持向量机</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-间隔的概念"><span class="nav-number">1.2.2.</span> <span class="nav-text">2 间隔的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-线性可分支持向量机-的学习算法"><span class="nav-number">1.2.3.</span> <span class="nav-text">3 线性可分支持向量机 的学习算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对偶求解推倒"><span class="nav-number">1.3.</span> <span class="nav-text">对偶求解推倒</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-求-min-w-b-L-w-b-a"><span class="nav-number">1.3.1.</span> <span class="nav-text">(1) 求$\min_{w,b}L(w,b,a)$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-对-min-w-b-L-w-b-a-求解对-a-的极大，即为对偶问题："><span class="nav-number">1.3.2.</span> <span class="nav-text">(2) 对$\min_{w,b}L(w,b,a)$求解对$a$的极大，即为对偶问题：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-将上述问题转为极小问题"><span class="nav-number">1.3.3.</span> <span class="nav-text">(3) 将上述问题转为极小问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-求解最优化极小问题-13-得到的解-a-ast-后，根据对偶问题KKT条件，可求得原问题的最优解-w-ast-b-ast-过程如下"><span class="nav-number">1.3.4.</span> <span class="nav-text">(4) 求解最优化极小问题(13)得到的解$a^\ast$后，根据对偶问题KKT条件，可求得原问题的最优解$w^\ast$,$b^\ast$,过程如下</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
