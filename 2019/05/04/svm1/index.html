@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Support Vector Machine 支持向量机 （1）简介支持向量机是基于统计的经典分类算法，是一种线性分类模型。虽然是一种线性模型，经过核技巧，也即核函数扩展以后，适用于非线性场景 基本概念1 线性可分支持向量机给定线性可分的训练数据集，通过间隔最大化或等价的求解相应的凸二次优化问题 学习得到的分离超平面为  y=w^* \cdot x+b^*以及相应的分类决策函数  f(x)=sig">
+<meta name="description" content="Support Vector Machine 支持向量机 （1）—powered by 《统计学习方法》.李航 简介支持向量机是基于统计的经典分类算法，是一种线性分类模型。虽然是一种线性模型，经过核技巧，也即核函数扩展以后，适用于非线性场景 基本概念1 线性可分支持向量机给定线性可分的训练数据集，通过间隔最大化或等价的求解相应的凸二次优化问题 学习得到的分离超平面为  y=w^* \cdot x+">
 <meta name="keywords" content="线性模型,基本概念,svm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Support Vector Machine 支持向量机 （1）">
 <meta property="og:url" content="http://yoursite.com/2019/05/04/svm1/index.html">
 <meta property="og:site_name" content="Bao‘s Notes">
-<meta property="og:description" content="Support Vector Machine 支持向量机 （1）简介支持向量机是基于统计的经典分类算法，是一种线性分类模型。虽然是一种线性模型，经过核技巧，也即核函数扩展以后，适用于非线性场景 基本概念1 线性可分支持向量机给定线性可分的训练数据集，通过间隔最大化或等价的求解相应的凸二次优化问题 学习得到的分离超平面为  y=w^* \cdot x+b^*以及相应的分类决策函数  f(x)=sig">
+<meta property="og:description" content="Support Vector Machine 支持向量机 （1）—powered by 《统计学习方法》.李航 简介支持向量机是基于统计的经典分类算法，是一种线性分类模型。虽然是一种线性模型，经过核技巧，也即核函数扩展以后，适用于非线性场景 基本概念1 线性可分支持向量机给定线性可分的训练数据集，通过间隔最大化或等价的求解相应的凸二次优化问题 学习得到的分离超平面为  y=w^* \cdot x+">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-06T14:47:10.000Z">
+<meta property="og:updated_time" content="2019-05-08T01:46:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Support Vector Machine 支持向量机 （1）">
-<meta name="twitter:description" content="Support Vector Machine 支持向量机 （1）简介支持向量机是基于统计的经典分类算法，是一种线性分类模型。虽然是一种线性模型，经过核技巧，也即核函数扩展以后，适用于非线性场景 基本概念1 线性可分支持向量机给定线性可分的训练数据集，通过间隔最大化或等价的求解相应的凸二次优化问题 学习得到的分离超平面为  y=w^* \cdot x+b^*以及相应的分类决策函数  f(x)=sig">
+<meta name="twitter:description" content="Support Vector Machine 支持向量机 （1）—powered by 《统计学习方法》.李航 简介支持向量机是基于统计的经典分类算法，是一种线性分类模型。虽然是一种线性模型，经过核技巧，也即核函数扩展以后，适用于非线性场景 基本概念1 线性可分支持向量机给定线性可分的训练数据集，通过间隔最大化或等价的求解相应的凸二次优化问题 学习得到的分离超平面为  y=w^* \cdot x+">
 
 
 
@@ -352,7 +352,8 @@
       
 
       
-        <h1 id="Support-Vector-Machine-支持向量机-（1）"><a href="#Support-Vector-Machine-支持向量机-（1）" class="headerlink" title="Support Vector Machine 支持向量机 （1）"></a>Support Vector Machine 支持向量机 （1）</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><pre><code>支持向量机是基于统计的经典分类算法，是一种线性分类模型。虽然是一种线性模型，经过核技巧，也即核函数扩展以后，适用于非线性场景
+        <h1 id="Support-Vector-Machine-支持向量机-（1）"><a href="#Support-Vector-Machine-支持向量机-（1）" class="headerlink" title="Support Vector Machine 支持向量机 （1）"></a>Support Vector Machine 支持向量机 （1）</h1><p>—powered by 《统计学习方法》.李航</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><pre><code>支持向量机是基于统计的经典分类算法，是一种线性分类模型。虽然是一种线性模型，经过核技巧，也即核函数扩展以后，适用于非线性场景
 </code></pre><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="1-线性可分支持向量机"><a href="#1-线性可分支持向量机" class="headerlink" title="1 线性可分支持向量机"></a>1 <em>线性可分支持向量机</em></h3><p>给定线性可分的训练数据集，通过<em>间隔最大化</em>或<em>等价的求解相应的凸二次优化问题</em> 学习得到的分离超平面为</p>
 <script type="math/tex; mode=display">
 y=w^* \cdot x+b^*</script><p>以及相应的分类决策函数</p>
@@ -535,7 +536,7 @@ f(x)=sign(\sum_{i=1}^{N}a_i^*y_i(x_i\cdot x)+b)</script>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -557,7 +558,7 @@ f(x)=sign(\sum_{i=1}^{N}a_i^*y_i(x_i\cdot x)+b)</script>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
