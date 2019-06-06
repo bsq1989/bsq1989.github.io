@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="线性模型,基本概念,svm,软间隔,">
+  <meta name="keywords" content="opencv,os x,">
 
 
 
@@ -79,18 +79,22 @@
 
 
 
-<meta name="description" content="Support Vector Machine 支持向量机(2)—powered by 《统计学习方法》.李航   简述在svm1笔记中，对svm的基本概念，以及其背后的数学含义进行了推倒与记录，其中所阐述的定义，全部基于一个前提-数据集线性可分。然而对于现实中的实际问题，很少有数据集是线性可分的，为了使svm可以在线性不可分数据集下工作，算法研究人员为svm引入软间隔以及软间隔最大相关概念。">
-<meta name="keywords" content="线性模型,基本概念,svm,软间隔">
+<meta name="description" content="OpenCV应该不用多介绍了，平时沾点图像处理的应该都了解，开源的计算机视觉库，算法齐全，C++开发，而且运行效率高，直接用到产品中也是可以的。在这主要记录一下mac下配置opencv的过程。 OpenCV 在mac下的开发环境配置平时的开发工作主要集中在windows平台上，怀抱微软的大腿，（虽然美国佬贸易战嘴脸丑恶，但是还是要承认某些领域的差距）,有宇宙第一编译器visual studio，在">
+<meta name="keywords" content="opencv,os x">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Support Vector Machine 支持向量机 （2）">
-<meta property="og:url" content="http://yoursite.com/2019/05/08/svm2/index.html">
+<meta property="og:title" content="Mac下配置opencv环境">
+<meta property="og:url" content="http://yoursite.com/2019/05/29/opencv_mac/index.html">
 <meta property="og:site_name" content="Bao‘s Notes">
-<meta property="og:description" content="Support Vector Machine 支持向量机(2)—powered by 《统计学习方法》.李航   简述在svm1笔记中，对svm的基本概念，以及其背后的数学含义进行了推倒与记录，其中所阐述的定义，全部基于一个前提-数据集线性可分。然而对于现实中的实际问题，很少有数据集是线性可分的，为了使svm可以在线性不可分数据集下工作，算法研究人员为svm引入软间隔以及软间隔最大相关概念。">
+<meta property="og:description" content="OpenCV应该不用多介绍了，平时沾点图像处理的应该都了解，开源的计算机视觉库，算法齐全，C++开发，而且运行效率高，直接用到产品中也是可以的。在这主要记录一下mac下配置opencv的过程。 OpenCV 在mac下的开发环境配置平时的开发工作主要集中在windows平台上，怀抱微软的大腿，（虽然美国佬贸易战嘴脸丑恶，但是还是要承认某些领域的差距）,有宇宙第一编译器visual studio，在">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-13T15:07:36.000Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/bsq1989/ImageRepo/master/test.png?token=ADBZGYLMAU5SKODYID566GS47CCRG">
+<meta property="og:image" content="https://raw.githubusercontent.com/bsq1989/ImageRepo/master/cmake_path.png?token=ADBZGYMVQWSV4PBE4FYUX2K47CCOM">
+<meta property="og:image" content="https://raw.githubusercontent.com/bsq1989/ImageRepo/master/cmake_build.png?token=ADBZGYJOUVWYOVDTP24WFS247CCL2">
+<meta property="og:updated_time" content="2019-06-06T04:09:50.711Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Support Vector Machine 支持向量机 （2）">
-<meta name="twitter:description" content="Support Vector Machine 支持向量机(2)—powered by 《统计学习方法》.李航   简述在svm1笔记中，对svm的基本概念，以及其背后的数学含义进行了推倒与记录，其中所阐述的定义，全部基于一个前提-数据集线性可分。然而对于现实中的实际问题，很少有数据集是线性可分的，为了使svm可以在线性不可分数据集下工作，算法研究人员为svm引入软间隔以及软间隔最大相关概念。">
+<meta name="twitter:title" content="Mac下配置opencv环境">
+<meta name="twitter:description" content="OpenCV应该不用多介绍了，平时沾点图像处理的应该都了解，开源的计算机视觉库，算法齐全，C++开发，而且运行效率高，直接用到产品中也是可以的。在这主要记录一下mac下配置opencv的过程。 OpenCV 在mac下的开发环境配置平时的开发工作主要集中在windows平台上，怀抱微软的大腿，（虽然美国佬贸易战嘴脸丑恶，但是还是要承认某些领域的差距）,有宇宙第一编译器visual studio，在">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/bsq1989/ImageRepo/master/test.png?token=ADBZGYLMAU5SKODYID566GS47CCRG">
 
 
 
@@ -120,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/08/svm2/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/29/opencv_mac/">
 
 
 
 
 
-  <title>Support Vector Machine 支持向量机 （2） | Bao‘s Notes</title>
+  <title>Mac下配置opencv环境 | Bao‘s Notes</title>
   
 
 
@@ -263,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/08/svm2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/29/opencv_mac/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="baoshiqiu">
@@ -280,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Support Vector Machine 支持向量机 （2）</h1>
+          <h1 class="post-title" itemprop="name headline">Mac下配置opencv环境</h1>
         
 
         <div class="post-meta">
@@ -292,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-08T09:30:00+08:00">
-                2019-05-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-29T23:30:00+08:00">
+                2019-05-29
               </time>
             
 
@@ -315,8 +319,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习</span>
+                  <a href="/categories/图像处理/" itemprop="url" rel="index">
+                    <span itemprop="name">图像处理</span>
                   </a>
                 </span>
 
@@ -352,70 +356,42 @@
       
 
       
-        <h1 id="Support-Vector-Machine-支持向量机-2"><a href="#Support-Vector-Machine-支持向量机-2" class="headerlink" title="Support Vector Machine 支持向量机(2)"></a>Support Vector Machine 支持向量机(2)</h1><p>—powered by 《统计学习方法》.李航  </p>
-<h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>在svm1笔记中，对svm的基本概念，以及其背后的数学含义进行了推倒与记录，其中所阐述的定义，全部基于一个前提-<em>数据集线性可分</em>。然而对于现实中的实际问题，很少有数据集是线性可分的，为了使svm可以在线性不可分数据集下工作，算法研究人员为svm引入<em>软间隔</em>以及<em>软间隔最大</em>相关概念。<br><a id="more"></a></p>
-<h2 id="软间隔"><a href="#软间隔" class="headerlink" title="软间隔"></a>软间隔</h2><p>假定给定某特征空间数据集</p>
-<script type="math/tex; mode=display">
-\Gamma=\{(x_1,y_1),(x_2,y_2),\dots,(x_n,y_n)\}</script><p>对于上述数据集$1\leq i\leq n,y_i\in \{ 1,-1\}$,$x_i\in R^n$。其中，$x_i$为数据集中某特征向量，$y_i$为其对应的标签，整个数据集不是线性可分的，对于通常情况，数据集中只有部分点是线性不可分的，剩余的点为线性可分。对于数据中某点$(x_i,y_i)$,其几何间隔：</p>
-<script type="math/tex; mode=display">
-\gamma=y_i(\frac{w^\ast}{||w||}\cdot x_i+\frac b{||w||})</script><p>线性不可分，意味着这些点无法满足$\gamma \geq 1$的条件。对于满足$\gamma \geq 1$的几何间隔，我们称之为<em>硬间隔</em>，相应地，对于$\gamma \leq 1$的间隔，我们称之为<em>软间隔</em>。</p>
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>对于无法满足硬间隔的数据，在之前定义的损失函数无法为其找到合适的分离超平面，因此，需要对硬间隔约束适当放宽。这里，我们为其引入松弛变量$\xi，\xi _i\geq 0$,使数据集内数据满足:</p>
-<script type="math/tex; mode=display">
-\gamma_i=y_i(\frac{w^\ast}{||w||}\cdot x_i+\frac b{||w||})\geq1-\xi_i,i\in 1\dots n，\xi_i \geq0 \tag{1}</script><p>那么，对于支持向量机算法，目标函数由$\frac{1}{2}||w||^2$变为如下形式</p>
-<script type="math/tex; mode=display">
-\min_{w,b,\xi} \frac{1}{2}||w||^2+C\sum_{i=1}^{n}\xi_i，,i\in 1\dots n，\xi_i \geq0 \tag{2}</script><p>其中，$C$为惩罚参数。这里的目标函数包含了两层含义，其一为间隔最小，其二为误分类的点最少，$C$为二者的调和系数。<br>在(2) 定义基础上，可以得出，对于线性不可分数据集，我们的目标是软间隔最大化，那么线性不可分支持向量机模型可以定义为如下凸优化问题：</p>
-<script type="math/tex; mode=display">
-\min_{w,b,\xi} \frac{1}{2}||w||^2+C\sum_{i=1}^{n}\xi_i\\
-s.t\quad y_i(w\cdot x_i+b)\geq1-\xi_i\\
-\xi_i \geq0\\
-i\in 1\dots n\tag{3}</script><h2 id="对偶学习算法推倒"><a href="#对偶学习算法推倒" class="headerlink" title="对偶学习算法推倒"></a>对偶学习算法推倒</h2><p>首先，建立广义拉格朗日函数，由于有两个约束函数，所以分别选取$\alpha,\mu$作为调和系数。</p>
-<script type="math/tex; mode=display">
-L(w,b,\xi,\alpha,\mu)=\frac{1}{2}||w||^2+C\sum_{i=1}^{n}\xi_i-\alpha\cdot(y\cdot((w\cdot x)+b)-1+\xi)-\mu\cdot\xi\\
-=\frac{1}{2}||w||^2+C\sum_{i=1}^{n}\xi_i-\sum_{i=1}^{n}(\alpha_iy_iw_ix_i-\alpha_i\xi_i+\alpha_iy_ib)+\sum_{i=1}^{n}\alpha_i-\sum_{i=1}^{n}\mu_i\xi_i\tag{4}</script><p>对偶问题为拉格朗日函数的极大极小问题,如下：</p>
-<script type="math/tex; mode=display">
-\max_{\alpha,\mu}\min_{w,b,\xi}L(w,b,\xi,\alpha,\mu) \tag{5}</script><p>先求极小问题，在函数取得极小值处，一阶导数为0.</p>
-<script type="math/tex; mode=display">
-\nabla_{w}L=w-\sum_{i=1}^{n}a_iy_ix_i=0\\
-\nabla_{b}L=\sum_{i=1}^{n}a_iy_i=0\\
-\nabla_{\xi}L=C-\alpha-\mu=0\tag{6}</script><p>由上式得：</p>
-<script type="math/tex; mode=display">
-w=\sum_{i=1}^{n}a_iy_ix_i\\
-\sum_{i=1}^{n}a_iy_i=0\\
-C-\alpha_i-\mu_i=0</script><p>带入（5）中，可得：</p>
-<script type="math/tex; mode=display">
-\max_{\alpha,\mu}=\frac{1}{2}\sum_{i=1}^{n}\sum_{j=1}^{n}a_ia_jy_iy_jx_ix_j-\sum_{i=1}^{n}\sum_{j=1}^{n}a_ia_jy_iy_jx_ix_j+\sum_{i=1}^{n}a_i\\
-=-\frac{1}{2}\sum_{i=1}^{n}\sum_{j=1}^{n}a_ia_jy_iy_jx_ix_j+\sum_{i=1}^{n}a_i\tag{7}</script><p>那么（7）即为对偶问题，完整描述如下：</p>
-<script type="math/tex; mode=display">
-\max_{\alpha,\mu}=-\frac{1}{2}\sum_{i=1}^{n}\sum_{j=1}^{n}a_ia_jy_iy_jx_ix_j+\sum_{i=1}^{n}a_i\\
-s.t.\quad \alpha_i\geq0\\
-\sum_{i=1}^{n}a_iy_i=0\\
-C-a_i-\mu_i=0\\
-\mu_i\geq0,i\in 1\dots n\tag{8}</script><p>其中，后两条约束条件可以转换为</p>
-<script type="math/tex; mode=display">
-0\leq a_i\leq C</script><p>设对偶问题（8）的一个解为$\alpha^\ast=(\alpha^\ast_1,\alpha^\ast_2,\alpha^\ast_3,\dots,\alpha^\ast_n)$,若存在一个分量$0\leq\alpha_j^\ast\leq C$,则根据KKT条件，原问题的解推倒过程如下：<br>根据KKT条件</p>
-<script type="math/tex; mode=display">
-\nabla_{w}L(w^\ast,b^\ast,\xi^\ast,\alpha^\ast,\mu^\ast)=w^\ast-\sum_{i=1}^{n}a_i^\ast y_ix_i=0\\
-\nabla_{b}L(w^\ast,b^\ast,\xi^\ast,\alpha^\ast,\mu^\ast)=\sum_{i=1}^{n}a_i^\ast y_i=0\\
-\nabla_{\xi}L(w^\ast,b^\ast,\xi^\ast,\alpha^\ast,\mu^\ast)=C-\alpha_i^\ast-\mu_i^\ast=0\\
-a^*_i*(y_i(w^*\cdot x_i+b)-1+\xi_i^\ast)=0\\
-\mu_i^\ast\xi_i^\ast=0\\
-y_i(w^*\cdot x_i+b)-1+\xi_i^\ast\geq0\\
-\xi_i^\ast\geq0\\
-\mu_i^\ast\geq0\\
-a_i^\ast\geq0,i=1\dots N\tag{9}</script><p>由条件（9）推倒，可得$w^\ast=\sum_{i=1}^{n}a_i^\ast y_ix_i$,由于存在$0&lt;\alpha_j^\ast&lt; C$，所以，$\xi_i=0,y_i(w^*\cdot x_i+b^\ast)-1=0$。<br>由此，分类超平面为</p>
-<script type="math/tex; mode=display">
-\sum_{i=1}^{N}a_iy_i(x\cdot x_i)+b^\ast=0</script><p>分类决策函数为：</p>
-<script type="math/tex; mode=display">
-f(x)=sign(\sum_{i=1}^{N}a_iy_i(x\cdot x_i)+b^\ast)</script><h2 id="线性支持向量机学习算法"><a href="#线性支持向量机学习算法" class="headerlink" title="线性支持向量机学习算法"></a>线性支持向量机学习算法</h2><p>综合前述推倒流程，可得线性支持向量机算法如下：<br>输入：$\Gamma=\{(x_1,y_1),(x_2,y_2),\dots,(x_n,y_n)\}$,其中，$x_i\in\chi\in R^n$,$y_i\in\{1,-1\}$,$i=1,\dots,N$<br>输出：分离超平面和决策函数。<br>（1）选择惩罚系数$C$,并构造求解凸二次规划问题</p>
-<script type="math/tex; mode=display">
-\max_{\alpha,\mu}=-\frac{1}{2}\sum_{i=1}^{n}\sum_{j=1}^{n}a_ia_jy_iy_jx_ix_j+\sum_{i=1}^{n}a_i\\
-s.t.\quad C\geq\alpha_i\geq0\\
-\sum_{i=1}^{n}a_iy_i=0\\</script><p>求得最优解$\alpha^\ast=(\alpha^\ast_1,\alpha^\ast_2,\alpha^\ast_3,\dots,\alpha^\ast_n)$<br>（2）计算$w^\ast=\sum_{i=1}^{n}a_i^\ast y_ix_i$<br>选择$\alpha^\ast$的一个分量$\alpha_j^\ast$,适合条件$0&lt;\alpha_j^\ast&lt;C$,计算</p>
-<script type="math/tex; mode=display">
-b^\ast=y_j-\sum_{i=1}^{n}a_i^\ast y_ix_i\cdot x_j</script><p>求得分离超平面和决策函数</p>
-<script type="math/tex; mode=display">
-\sum_{i=1}^{N}a_iy_i(x\cdot x_i)+b^\ast=0\\
-f(x)=sign(\sum_{i=1}^{N}a_iy_i(x\cdot x_i)+b^\ast)</script>
+        <h1 id="OpenCV"><a href="#OpenCV" class="headerlink" title="OpenCV"></a>OpenCV</h1><p>应该不用多介绍了，平时沾点图像处理的应该都了解，开源的计算机视觉库，算法齐全，C++开发，而且运行效率高，直接用到产品中也是可以的。在这主要记录一下mac下配置opencv的过程。</p>
+<h1 id="OpenCV-在mac下的开发环境配置"><a href="#OpenCV-在mac下的开发环境配置" class="headerlink" title="OpenCV 在mac下的开发环境配置"></a>OpenCV 在mac下的开发环境配置</h1><p>平时的开发工作主要集中在windows平台上，怀抱微软的大腿，（虽然美国佬贸易战嘴脸丑恶，但是还是要承认某些领域的差距）,有宇宙第一编译器visual studio，在win平台开发体验还是杠杠的，配置工程各种依赖项，各种工程配置都是通过GUI去配置。为了跳出这个工作习惯，加之今年开始用git写笔记，家里的mac本用了起来，最近的工作又跟图像处理相关，因此想着能否在mac本上配置一下openCV的环境，以便平时写些demo，跑跑算法。<br><a id="more"></a></p>
+<h2 id="源代码下载"><a href="#源代码下载" class="headerlink" title="源代码下载"></a>源代码下载</h2><p>官方网站：<a href="https://opencv.org/" target="_blank" rel="noopener">https://opencv.org/</a><br>页面如下所示：<br><img src="https://raw.githubusercontent.com/bsq1989/ImageRepo/master/test.png?token=ADBZGYLMAU5SKODYID566GS47CCRG" alt="源码下载"><br>选择Release页，会列出所有发行版，现在版本已经比较多了，已经更新到了4.x.x，相比最早的库加入了机器学习以及深度学习相关功能模块，这次下载的为opencv4.10.0。下载到本地后，解压，然后在解压文件夹下新建一个文件夹，通常我取名build，用于存储一些构建需要的中间文件。</p>
+<h2 id="CMake下载"><a href="#CMake下载" class="headerlink" title="CMake下载"></a>CMake下载</h2><p>mac下编译开源代码需要cmake工具，跟win平台差不多，去cmake主页 :<a href="https://cmake.org/" target="_blank" rel="noopener">https://cmake.org/</a> 下载mac对应的dmg应用程序，并安装。</p>
+<h2 id="CMake构建opencv"><a href="#CMake构建opencv" class="headerlink" title="CMake构建opencv"></a>CMake构建opencv</h2><p>下载完成后，在本机的profile文件中增加CMake的程序路径到PATH环境变量，在用户路径下的.bash_profile下增加也可以。<br><img src="https://raw.githubusercontent.com/bsq1989/ImageRepo/master/cmake_path.png?token=ADBZGYMVQWSV4PBE4FYUX2K47CCOM" alt="环境变量配置"><br>增加后，可以开始构建opencv源代码了。在mac构建代码与win上差不多，因为cmake的GUI比较完善，流程与win下相同， 打开软件，在最上面选择代码路径，也就是包含CMakeList.txt的路径，在下面一行选择生成构建配置文件的路径<br><img src="https://raw.githubusercontent.com/bsq1989/ImageRepo/master/cmake_build.png?token=ADBZGYJOUVWYOVDTP24WFS247CCL2" alt><br>然后点击下方的config按钮，开始进行配置解析，有时候会有一些警告，不用管，这里说一下，在进行源代码构建的时候，不是所有的第三方依赖都需要配置，需要根据自己的需求进行配置，具体需求就要看代码路径里的一些说明了。对于opencv的编译，config过后直接点击generate进行生成即可。<br>这里其实与win平台都一样，只不过在win平台上，build中生成的是vs 的sln文件，这里生成的是gcc需要的编译配置文件。<br>接下来就可以进行源码编译了，需要在命令行下进行，打开终端，切换到build路径，直接输入make指令，即可。然后输入sudo make install，所有的头文件以及动态库，静态库都会被拷贝至CMAKELists.txt中配置的INSTALL_PREFIX路径中，最后的make install一定要加sudo，因为一般的安装路径都会配置到系统根目录下的usr/share中，否则没有权限创建路径。在编译的过程中，遇到了个问题：<br>1.在这期间更新了mac系统，刚刚更新系统后，执行config/generate时，提示xcrun error,这里，需要下载mac的xcode-select。打开终端，输入<br><code>xcode-select --install</code><br>2.安装完成后，在此config,提示找不到‘sys’下的头文件，百度后，找到一个相似的问题，原理上其实是开发者的运行时环境没有安装释放相关头文件，需要前往到如下路径<br><code>/Library/Developer/CommandLineTools/Packages</code><br>在该路径下，双击Command_Line_Tools_macOS_xx_for_Xcode_xx.dmg进行安装，安装过后，即可完成config/generate过程。</p>
+<h1 id="OpenCV-demo"><a href="#OpenCV-demo" class="headerlink" title="OpenCV demo"></a>OpenCV demo</h1><p>这几年jetbrain公司的IDE大火，在Mac下准备使用CLion进行C++开发，jetbrain系列界面简洁，而且idea，pycharm，clion之间界面风格以及配置ui布局基本相同。<br>第一次转到unix/linux开发，第一个问题就是如何配置依赖项。在CLion中，这些配置均在CMakeList.txt中完成。<br>首先，新建工程testopenCv，在工程路径下，可看到CMakeList.txt文件，代开文件，配置如下:    </p>
+<pre><code>cmake_minimum_required(VERSION 3.13)
+set(CMAKE_CXX_STANDARD 11)
+project(testOpenCv)
+
+#find_package(OpenCV)
+
+include_directories(/usr/local/include/opencv4/)#配置代码文件包含路径
+set(CMAKE_CXX_STANDARD 11)
+
+add_executable(testOpenCv main.cpp)
+#配置链接库
+target_link_libraries(testOpenCv /usr/local/lib/libopencv_core.4.1.0.dylib)
+target_link_libraries(testOpenCv /usr/local/lib/libopencv_imgcodecs.4.1.0.dylib)
+target_link_libraries(testOpenCv /usr/local/lib/libopencv_highgui.4.1.0.dylib)    
+</code></pre><p>配置完成后，clion会自动对该脚本进行构建。配置好后，就可以进行代码编写了，测试代码如下:  </p>
+<pre><code>#include&lt;iostream&gt;
+#include &quot;opencv2/opencv.hpp&quot;
+
+using namespace cv;
+int main() {
+   Mat img=imread(&quot;./fruits.jpg&quot;);
+    std::cout&lt;&lt;img.rows&lt;&lt;&quot;,&quot;&lt;&lt;img.cols&lt;&lt;std::endl;
+    std::cout&lt;&lt;&quot;channels:&quot;&lt;&lt;img.channels();
+
+    imshow(&quot;test&quot;,img);
+    waitKey(10);
+    return 0;
+}
+</code></pre><p>运行如下代码后，会在控制台上打印出图像宽高以及图像通道数，并弹出窗口显示图像。</p>
+
       
     </div>
     
@@ -432,13 +408,9 @@ f(x)=sign(\sum_{i=1}^{N}a_iy_i(x\cdot x_i)+b^\ast)</script>
       
         <div class="post-tags">
           
-            <a href="/tags/线性模型/" rel="tag"># 线性模型</a>
+            <a href="/tags/opencv/" rel="tag"># opencv</a>
           
-            <a href="/tags/基本概念/" rel="tag"># 基本概念</a>
-          
-            <a href="/tags/svm/" rel="tag"># svm</a>
-          
-            <a href="/tags/软间隔/" rel="tag"># 软间隔</a>
+            <a href="/tags/os-x/" rel="tag"># os x</a>
           
         </div>
       
@@ -451,8 +423,8 @@ f(x)=sign(\sum_{i=1}^{N}a_iy_i(x\cdot x_i)+b^\ast)</script>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/05/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/05/08/svm2/" rel="next" title="Support Vector Machine 支持向量机 （2）">
+                <i class="fa fa-chevron-left"></i> Support Vector Machine 支持向量机 （2）
               </a>
             
           </div>
@@ -460,10 +432,6 @@ f(x)=sign(\sum_{i=1}^{N}a_iy_i(x\cdot x_i)+b^\ast)</script>
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/29/opencv_mac/" rel="prev" title="Mac下配置opencv环境">
-                Mac下配置opencv环境 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -595,7 +563,7 @@ f(x)=sign(\sum_{i=1}^{N}a_iy_i(x\cdot x_i)+b^\ast)</script>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Support-Vector-Machine-支持向量机-2"><span class="nav-number">1.</span> <span class="nav-text">Support Vector Machine 支持向量机(2)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简述"><span class="nav-number">1.1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软间隔"><span class="nav-number">1.2.</span> <span class="nav-text">软间隔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.3.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对偶学习算法推倒"><span class="nav-number">1.4.</span> <span class="nav-text">对偶学习算法推倒</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性支持向量机学习算法"><span class="nav-number">1.5.</span> <span class="nav-text">线性支持向量机学习算法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OpenCV"><span class="nav-number">1.</span> <span class="nav-text">OpenCV</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OpenCV-在mac下的开发环境配置"><span class="nav-number">2.</span> <span class="nav-text">OpenCV 在mac下的开发环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#源代码下载"><span class="nav-number">2.1.</span> <span class="nav-text">源代码下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMake下载"><span class="nav-number">2.2.</span> <span class="nav-text">CMake下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMake构建opencv"><span class="nav-number">2.3.</span> <span class="nav-text">CMake构建opencv</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OpenCV-demo"><span class="nav-number">3.</span> <span class="nav-text">OpenCV demo</span></a></li></ol></div>
             
 
           </div>
