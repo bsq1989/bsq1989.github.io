@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="opencv,os x,">
+  <meta name="keywords" content="svm,guid,">
 
 
 
@@ -79,22 +79,18 @@
 
 
 
-<meta name="description" content="OpenCV应该不用多介绍了，平时沾点图像处理的应该都了解，开源的计算机视觉库，算法齐全，C++开发，而且运行效率高，直接用到产品中也是可以的。在这主要记录一下mac下配置opencv的过程。 OpenCV 在mac下的开发环境配置平时的开发工作主要集中在windows平台上，怀抱微软的大腿，（虽然美国佬贸易战嘴脸丑恶，但是还是要承认某些领域的差距）,有宇宙第一编译器visual studio，在">
-<meta name="keywords" content="opencv,os x">
+<meta name="description" content="svm 模型训练指南[1]学习了svm模型后，上手实际的数据进行模型训练，在网上找到了libsvm作者给出的支持向量机模型训练指南，其中，针对初学者，给出了训练出较好的svm模型的实践方法。">
+<meta name="keywords" content="svm,guid">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac下配置opencv环境">
-<meta property="og:url" content="http://yoursite.com/2019/05/29/opencv_mac/index.html">
+<meta property="og:title" content="svm 指南">
+<meta property="og:url" content="http://yoursite.com/2019/06/10/svmguid/index.html">
 <meta property="og:site_name" content="Bao‘s Notes">
-<meta property="og:description" content="OpenCV应该不用多介绍了，平时沾点图像处理的应该都了解，开源的计算机视觉库，算法齐全，C++开发，而且运行效率高，直接用到产品中也是可以的。在这主要记录一下mac下配置opencv的过程。 OpenCV 在mac下的开发环境配置平时的开发工作主要集中在windows平台上，怀抱微软的大腿，（虽然美国佬贸易战嘴脸丑恶，但是还是要承认某些领域的差距）,有宇宙第一编译器visual studio，在">
+<meta property="og:description" content="svm 模型训练指南[1]学习了svm模型后，上手实际的数据进行模型训练，在网上找到了libsvm作者给出的支持向量机模型训练指南，其中，针对初学者，给出了训练出较好的svm模型的实践方法。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://raw.githubusercontent.com/bsq1989/ImageRepo/master/test.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/bsq1989/ImageRepo/master/cmake_path.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/bsq1989/ImageRepo/master/cmake_build.png">
-<meta property="og:updated_time" content="2019-06-08T10:13:28.807Z">
+<meta property="og:updated_time" content="2019-06-12T15:41:11.054Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac下配置opencv环境">
-<meta name="twitter:description" content="OpenCV应该不用多介绍了，平时沾点图像处理的应该都了解，开源的计算机视觉库，算法齐全，C++开发，而且运行效率高，直接用到产品中也是可以的。在这主要记录一下mac下配置opencv的过程。 OpenCV 在mac下的开发环境配置平时的开发工作主要集中在windows平台上，怀抱微软的大腿，（虽然美国佬贸易战嘴脸丑恶，但是还是要承认某些领域的差距）,有宇宙第一编译器visual studio，在">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/bsq1989/ImageRepo/master/test.png">
+<meta name="twitter:title" content="svm 指南">
+<meta name="twitter:description" content="svm 模型训练指南[1]学习了svm模型后，上手实际的数据进行模型训练，在网上找到了libsvm作者给出的支持向量机模型训练指南，其中，针对初学者，给出了训练出较好的svm模型的实践方法。">
 
 
 
@@ -124,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/29/opencv_mac/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/10/svmguid/">
 
 
 
 
 
-  <title>Mac下配置opencv环境 | Bao‘s Notes</title>
+  <title>svm 指南 | Bao‘s Notes</title>
   
 
 
@@ -267,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/29/opencv_mac/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/10/svmguid/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="baoshiqiu">
@@ -284,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Mac下配置opencv环境</h1>
+          <h1 class="post-title" itemprop="name headline">svm 指南</h1>
         
 
         <div class="post-meta">
@@ -296,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-29T23:30:00+08:00">
-                2019-05-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-10T22:30:00+08:00">
+                2019-06-10
               </time>
             
 
@@ -319,8 +315,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/图像处理/" itemprop="url" rel="index">
-                    <span itemprop="name">图像处理</span>
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
                   </a>
                 </span>
 
@@ -356,41 +352,43 @@
       
 
       
-        <h1 id="OpenCV"><a href="#OpenCV" class="headerlink" title="OpenCV"></a>OpenCV</h1><p>应该不用多介绍了，平时沾点图像处理的应该都了解，开源的计算机视觉库，算法齐全，C++开发，而且运行效率高，直接用到产品中也是可以的。在这主要记录一下mac下配置opencv的过程。</p>
-<h1 id="OpenCV-在mac下的开发环境配置"><a href="#OpenCV-在mac下的开发环境配置" class="headerlink" title="OpenCV 在mac下的开发环境配置"></a>OpenCV 在mac下的开发环境配置</h1><p>平时的开发工作主要集中在windows平台上，怀抱微软的大腿，（虽然美国佬贸易战嘴脸丑恶，但是还是要承认某些领域的差距）,有宇宙第一编译器visual studio，在win平台开发体验还是杠杠的，配置工程各种依赖项，各种工程配置都是通过GUI去配置。为了跳出这个工作习惯，加之今年开始用git写笔记，家里的mac本用了起来，最近的工作又跟图像处理相关，因此想着能否在mac本上配置一下openCV的环境，以便平时写些demo，跑跑算法。<br><a id="more"></a></p>
-<h2 id="源代码下载"><a href="#源代码下载" class="headerlink" title="源代码下载"></a>源代码下载</h2><p>官方网站：<a href="https://opencv.org/" target="_blank" rel="noopener">https://opencv.org/</a><br>页面如下所示：<br><img src="https://raw.githubusercontent.com/bsq1989/ImageRepo/master/test.png" alt="源码下载"><br>选择Release页，会列出所有发行版，现在版本已经比较多了，已经更新到了4.x.x，相比最早的库加入了机器学习以及深度学习相关功能模块，这次下载的为opencv4.10.0。下载到本地后，解压，然后在解压文件夹下新建一个文件夹，通常我取名build，用于存储一些构建需要的中间文件。</p>
-<h2 id="CMake下载"><a href="#CMake下载" class="headerlink" title="CMake下载"></a>CMake下载</h2><p>mac下编译开源代码需要cmake工具，跟win平台差不多，去cmake主页 :<a href="https://cmake.org/" target="_blank" rel="noopener">https://cmake.org/</a> 下载mac对应的dmg应用程序，并安装。</p>
-<h2 id="CMake构建opencv"><a href="#CMake构建opencv" class="headerlink" title="CMake构建opencv"></a>CMake构建opencv</h2><p>下载完成后，在本机的profile文件中增加CMake的程序路径到PATH环境变量，在用户路径下的.bash_profile下增加也可以。<br><img src="https://raw.githubusercontent.com/bsq1989/ImageRepo/master/cmake_path.png" alt="环境变量配置"><br>增加后，可以开始构建opencv源代码了。在mac构建代码与win上差不多，因为cmake的GUI比较完善，流程与win下相同， 打开软件，在最上面选择代码路径，也就是包含CMakeList.txt的路径，在下面一行选择生成构建配置文件的路径<br><img src="https://raw.githubusercontent.com/bsq1989/ImageRepo/master/cmake_build.png" alt><br>然后点击下方的config按钮，开始进行配置解析，有时候会有一些警告，不用管，这里说一下，在进行源代码构建的时候，不是所有的第三方依赖都需要配置，需要根据自己的需求进行配置，具体需求就要看代码路径里的一些说明了。对于opencv的编译，config过后直接点击generate进行生成即可。<br>这里其实与win平台都一样，只不过在win平台上，build中生成的是vs 的sln文件，这里生成的是gcc需要的编译配置文件。<br>接下来就可以进行源码编译了，需要在命令行下进行，打开终端，切换到build路径，直接输入make指令，即可。然后输入sudo make install，所有的头文件以及动态库，静态库都会被拷贝至CMAKELists.txt中配置的INSTALL_PREFIX路径中，最后的make install一定要加sudo，因为一般的安装路径都会配置到系统根目录下的usr/share中，否则没有权限创建路径。在编译的过程中，遇到了个问题：<br>1.在这期间更新了mac系统，刚刚更新系统后，执行config/generate时，提示xcrun error,这里，需要下载mac的xcode-select。打开终端，输入<br><code>xcode-select --install</code><br>2.安装完成后，在此config,提示找不到‘sys’下的头文件，百度后，找到一个相似的问题，原理上其实是开发者的运行时环境没有安装释放相关头文件，需要前往到如下路径<br><code>/Library/Developer/CommandLineTools/Packages</code><br>在该路径下，双击Command_Line_Tools_macOS_xx_for_Xcode_xx.dmg进行安装，安装过后，即可完成config/generate过程。</p>
-<h1 id="OpenCV-demo"><a href="#OpenCV-demo" class="headerlink" title="OpenCV demo"></a>OpenCV demo</h1><p>这几年jetbrain公司的IDE大火，在Mac下准备使用CLion进行C++开发，jetbrain系列界面简洁，而且idea，pycharm，clion之间界面风格以及配置ui布局基本相同。<br>第一次转到unix/linux开发，第一个问题就是如何配置依赖项。在CLion中，这些配置均在CMakeList.txt中完成。<br>首先，新建工程testopenCv，在工程路径下，可看到CMakeList.txt文件，代开文件，配置如下:    </p>
-<pre><code>cmake_minimum_required(VERSION 3.13)
-set(CMAKE_CXX_STANDARD 11)
-project(testOpenCv)
-
-#find_package(OpenCV)
-
-include_directories(/usr/local/include/opencv4/)#配置代码文件包含路径
-set(CMAKE_CXX_STANDARD 11)
-
-add_executable(testOpenCv main.cpp)
-#配置链接库
-target_link_libraries(testOpenCv /usr/local/lib/libopencv_core.4.1.0.dylib)
-target_link_libraries(testOpenCv /usr/local/lib/libopencv_imgcodecs.4.1.0.dylib)
-target_link_libraries(testOpenCv /usr/local/lib/libopencv_highgui.4.1.0.dylib)    
-</code></pre><p>配置完成后，clion会自动对该脚本进行构建。配置好后，就可以进行代码编写了，测试代码如下:  </p>
-<pre><code>#include&lt;iostream&gt;
-#include &quot;opencv2/opencv.hpp&quot;
-
-using namespace cv;
-int main() {
-   Mat img=imread(&quot;./fruits.jpg&quot;);
-    std::cout&lt;&lt;img.rows&lt;&lt;&quot;,&quot;&lt;&lt;img.cols&lt;&lt;std::endl;
-    std::cout&lt;&lt;&quot;channels:&quot;&lt;&lt;img.channels();
-
-    imshow(&quot;test&quot;,img);
-    waitKey(10);
-    return 0;
-}
-</code></pre><p>运行如下代码后，会在控制台上打印出图像宽高以及图像通道数，并弹出窗口显示图像。</p>
+        <h1 id="svm-模型训练指南-1"><a href="#svm-模型训练指南-1" class="headerlink" title="svm 模型训练指南[1]"></a>svm 模型训练指南<sup>[1]</sup></h1><p>学习了svm模型后，上手实际的数据进行模型训练，在网上找到了libsvm作者给出的支持向量机模型训练指南，其中，针对初学者，给出了训练出较好的svm模型的实践方法。<br><a id="more"></a></p>
+<h2 id="推荐步骤"><a href="#推荐步骤" class="headerlink" title="推荐步骤"></a>推荐步骤</h2><p>svm最优化问题定义如下：</p>
+<script type="math/tex; mode=display">
+\min_{w,C,\xi} \frac{1}{2}w^Tw+C\sum_{i=1}^{N}\xi_i</script><script type="math/tex; mode=display">
+s.t.\quad y_i(w\cdot \phi(x_i)+b) \geq 1-\xi_i\\
+i=1\cdots N\\
+\xi_i \geq 0</script><p>原文推荐的步骤如下：  </p>
+<ul>
+<li>将数据变换为libsvm格式包</li>
+<li>简单数据变换</li>
+<li>考虑利用RBF核函数进行高维映射，RBF核函数为$K(x,y)=exp(-\gamma||x-y||)$</li>
+<li>利用交叉验证，验证出最优的参数$C$,$\gamma$</li>
+<li>利用最好的参数$C$,$\gamma$，训练整个训练集</li>
+<li>利用测试集进行测试        </li>
+</ul>
+<p>对于第一步，如果不用libsvm，可以不做，libsvm对训练数据有指定的格式要求，目前通常的算法开发环境为python系列，目标数据格式满足pandas.DataFrame的要求即可。</p>
+<h2 id="简单数据变换"><a href="#简单数据变换" class="headerlink" title="简单数据变换"></a>简单数据变换</h2><p>原文中，为conduct simple scaling on dataset。其实这里不仅仅包含着字面意义的scaling，而且还包含着对于非数值类型数据的处理。这部分内容其实和其他诸多教材中的数据预处理，清洗内容没有什么区别，而且，对于原始数据，可能还包含着需要丢弃某些特征或者组合某些维度的特征生成新特征的工作。<br>不考虑特征工程的问题，那么数据的预处理可以简单的分为两种类型的数据预处理，数值型与非数值类型。</p>
+<h3 id="数值类型数据预处理"><a href="#数值类型数据预处理" class="headerlink" title="数值类型数据预处理"></a>数值类型数据预处理</h3><p>对于数值类型的数据，首先看有没有缺项，如果有缺项，考虑丢弃缺项数据或者填充缺项数据。填充缺项数据通常是将缺项的数据填充为均值，最大值，或者最小值等典型统计数值。缺项数据处理过后，通常将数据归一化到相同的尺度范围，通常是归一化至0-1。</p>
+<h3 id="分类数据类型数据预处理"><a href="#分类数据类型数据预处理" class="headerlink" title="分类数据类型数据预处理"></a>分类数据类型数据预处理</h3><p>对于分类数据，通常利用将类型编码成数值编码，对于二分类问题，直接编码成0，1即可，对于多分类，假设有m种类型，则通常编码为m维向量，也就是python sklearn库种的one hot encode，热独编码。例如，颜色分类集合{r,g,b}，如果某一颜色值为r,则编码为向量[1,0,0]，如果为g,则编码为{0,1,0}。</p>
+<h2 id="核函数选择"><a href="#核函数选择" class="headerlink" title="核函数选择"></a>核函数选择</h2><p>svm常用的核函数有如下四中：  </p>
+<ul>
+<li>线性核函数:$K(x_i,x_j)=x_i^Tx_j$  </li>
+<li>多项式核函数:$K(x_i,x_j)=(\gamma x_i^Tx_j+r)^d,\gamma \gt0$</li>
+<li>rbf核函数:$K(x_i,x_j)=exp(-\gamma||x_i-x_j||^2),\gamma \gt 0$</li>
+<li>sigmoid 激活函数:$K(x_i,x_j)=tanh(\gamma x_i^Tx_j+r),\gamma \gt0$</li>
+</ul>
+<p>在文中，核函数首推RBF核函数，原因如下：</p>
+<ul>
+<li>具备处理非线性关系分类的能力</li>
+<li>线性模型是RBF模型的特例情况</li>
+<li>与多项式模型相比，具有更少的超参数</li>
+<li>在求解过程中，数值问题更少，例如：如果多项式模型的内部的值小于1，在d较大的情况之下，计算值偏小，有可能趋于0，而内部的值如果较大，计算值有可能趋于无穷</li>
+<li>在某些情况下，sigmoid函数不可用</li>
+</ul>
+<h2 id="模型选择"><a href="#模型选择" class="headerlink" title="模型选择"></a>模型选择</h2><h3 id="交叉验证"><a href="#交叉验证" class="headerlink" title="交叉验证"></a>交叉验证</h3><p>k-fold交叉验证，首先，将全部样本划分成k个大小的相等的样本子集；依次便利这k个子集，每次把当前子集作为验证集，其余所有子集作为训练集，进行模型的训练和评估。最后把k次评估指标的平均值作为最终的评估指标。在实际实验中，k通常取10。</p>
+<h3 id="Grid-search-网格搜索"><a href="#Grid-search-网格搜索" class="headerlink" title="Grid-search 网格搜索"></a>Grid-search 网格搜索</h3><p>对于使用rbf核函数的svm算法，其中有两个参数需要确定，$C,\gamma$，文中推荐使用网格搜索，以及交叉验证，来最终确定参数的选取。所谓网格搜索，也就是规定$C,\gamma$两个变量的取值范围，这样就形成了，一个二维取值空间，而每一维其实是一个离散的数值序列，这样就取得了一个二维网格，每一个网格对应了一对超参数的取值，获得取值之后，利用交叉验证来取得该对超参数的评估指标，选出评估指标最高的一对超参数，作为模型的超参数。<br>网格搜索可能带来比较大的计算量，对于这种情况，文中推荐，首先利用稀疏网格，来确定评估指标较好的一个区域，再利用较为细致的网格，在此区域内进行参数选择。</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1]Hsu C , Chang C , Lin C . A practical guide to support vector classification[J]. 臺北市:國立臺灣大學資訊工程學系, 2010, 67(5).</p>
 
       
     </div>
@@ -408,9 +406,9 @@ int main() {
       
         <div class="post-tags">
           
-            <a href="/tags/opencv/" rel="tag"># opencv</a>
+            <a href="/tags/svm/" rel="tag"># svm</a>
           
-            <a href="/tags/os-x/" rel="tag"># os x</a>
+            <a href="/tags/guid/" rel="tag"># guid</a>
           
         </div>
       
@@ -423,8 +421,8 @@ int main() {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/08/svm2/" rel="next" title="Support Vector Machine 支持向量机 （2）">
-                <i class="fa fa-chevron-left"></i> Support Vector Machine 支持向量机 （2）
+              <a href="/2019/05/29/opencv_mac/" rel="next" title="Mac下配置opencv环境">
+                <i class="fa fa-chevron-left"></i> Mac下配置opencv环境
               </a>
             
           </div>
@@ -432,10 +430,6 @@ int main() {
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/10/svmguid/" rel="prev" title="svm 指南">
-                svm 指南 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -567,7 +561,7 @@ int main() {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OpenCV"><span class="nav-number">1.</span> <span class="nav-text">OpenCV</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OpenCV-在mac下的开发环境配置"><span class="nav-number">2.</span> <span class="nav-text">OpenCV 在mac下的开发环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#源代码下载"><span class="nav-number">2.1.</span> <span class="nav-text">源代码下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMake下载"><span class="nav-number">2.2.</span> <span class="nav-text">CMake下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMake构建opencv"><span class="nav-number">2.3.</span> <span class="nav-text">CMake构建opencv</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OpenCV-demo"><span class="nav-number">3.</span> <span class="nav-text">OpenCV demo</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#svm-模型训练指南-1"><span class="nav-number">1.</span> <span class="nav-text">svm 模型训练指南[1]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐步骤"><span class="nav-number">1.1.</span> <span class="nav-text">推荐步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单数据变换"><span class="nav-number">1.2.</span> <span class="nav-text">简单数据变换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数值类型数据预处理"><span class="nav-number">1.2.1.</span> <span class="nav-text">数值类型数据预处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分类数据类型数据预处理"><span class="nav-number">1.2.2.</span> <span class="nav-text">分类数据类型数据预处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核函数选择"><span class="nav-number">1.3.</span> <span class="nav-text">核函数选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型选择"><span class="nav-number">1.4.</span> <span class="nav-text">模型选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#交叉验证"><span class="nav-number">1.4.1.</span> <span class="nav-text">交叉验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Grid-search-网格搜索"><span class="nav-number">1.4.2.</span> <span class="nav-text">Grid-search 网格搜索</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">2.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
