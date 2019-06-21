@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="svm,guid,">
+  <meta name="keywords" content="xgboost,mac os,">
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="svm 模型训练指南[1]学习了svm模型后，上手实际的数据进行模型训练，在网上找到了libsvm作者给出的支持向量机模型训练指南，其中，针对初学者，给出了训练出较好的svm模型的实践方法。">
-<meta name="keywords" content="svm,guid">
+<meta name="description" content="xgboost max os 下的配置简介根据官方网站自述，XGBoost是一套高效，灵活，便于移植的经过优化的分布式梯度提升库。它实现了梯度提升算法框架。它提供了一套行之有效的并行提升树算法。它部署在如hadoop，MPI之类的主流分布式系统上，可以解决具有数亿样本的大数据问题。XGBoost问世以来，在kaggle等大数据比赛中取得了优异的成绩，是一款主流的机器学习框架。">
+<meta name="keywords" content="xgboost,mac os">
 <meta property="og:type" content="article">
-<meta property="og:title" content="svm 指南">
-<meta property="og:url" content="http://yoursite.com/2019/06/10/svmguid/index.html">
+<meta property="og:title" content="xgboost 安装">
+<meta property="og:url" content="http://yoursite.com/2019/06/18/xgboost_install/index.html">
 <meta property="og:site_name" content="Bao‘s Notes">
-<meta property="og:description" content="svm 模型训练指南[1]学习了svm模型后，上手实际的数据进行模型训练，在网上找到了libsvm作者给出的支持向量机模型训练指南，其中，针对初学者，给出了训练出较好的svm模型的实践方法。">
+<meta property="og:description" content="xgboost max os 下的配置简介根据官方网站自述，XGBoost是一套高效，灵活，便于移植的经过优化的分布式梯度提升库。它实现了梯度提升算法框架。它提供了一套行之有效的并行提升树算法。它部署在如hadoop，MPI之类的主流分布式系统上，可以解决具有数亿样本的大数据问题。XGBoost问世以来，在kaggle等大数据比赛中取得了优异的成绩，是一款主流的机器学习框架。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-12T15:41:11.054Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/bsq1989/ImageRepo/master/xgboostTest.png">
+<meta property="og:updated_time" content="2019-06-21T15:17:35.339Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="svm 指南">
-<meta name="twitter:description" content="svm 模型训练指南[1]学习了svm模型后，上手实际的数据进行模型训练，在网上找到了libsvm作者给出的支持向量机模型训练指南，其中，针对初学者，给出了训练出较好的svm模型的实践方法。">
+<meta name="twitter:title" content="xgboost 安装">
+<meta name="twitter:description" content="xgboost max os 下的配置简介根据官方网站自述，XGBoost是一套高效，灵活，便于移植的经过优化的分布式梯度提升库。它实现了梯度提升算法框架。它提供了一套行之有效的并行提升树算法。它部署在如hadoop，MPI之类的主流分布式系统上，可以解决具有数亿样本的大数据问题。XGBoost问世以来，在kaggle等大数据比赛中取得了优异的成绩，是一款主流的机器学习框架。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/bsq1989/ImageRepo/master/xgboostTest.png">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/10/svmguid/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/18/xgboost_install/">
 
 
 
 
 
-  <title>svm 指南 | Bao‘s Notes</title>
+  <title>xgboost 安装 | Bao‘s Notes</title>
   
 
 
@@ -263,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/10/svmguid/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/18/xgboost_install/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="baoshiqiu">
@@ -280,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">svm 指南</h1>
+          <h1 class="post-title" itemprop="name headline">xgboost 安装</h1>
         
 
         <div class="post-meta">
@@ -292,8 +294,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-10T22:30:00+08:00">
-                2019-06-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-18T22:30:00+08:00">
+                2019-06-18
               </time>
             
 
@@ -352,43 +354,19 @@
       
 
       
-        <h1 id="svm-模型训练指南-1"><a href="#svm-模型训练指南-1" class="headerlink" title="svm 模型训练指南[1]"></a>svm 模型训练指南<sup>[1]</sup></h1><p>学习了svm模型后，上手实际的数据进行模型训练，在网上找到了libsvm作者给出的支持向量机模型训练指南，其中，针对初学者，给出了训练出较好的svm模型的实践方法。<br><a id="more"></a></p>
-<h2 id="推荐步骤"><a href="#推荐步骤" class="headerlink" title="推荐步骤"></a>推荐步骤</h2><p>svm最优化问题定义如下：</p>
-<script type="math/tex; mode=display">
-\min_{w,C,\xi} \frac{1}{2}w^Tw+C\sum_{i=1}^{N}\xi_i</script><script type="math/tex; mode=display">
-s.t.\quad y_i(w\cdot \phi(x_i)+b) \geq 1-\xi_i\\
-i=1\cdots N\\
-\xi_i \geq 0</script><p>原文推荐的步骤如下：  </p>
+        <h1 id="xgboost-max-os-下的配置"><a href="#xgboost-max-os-下的配置" class="headerlink" title="xgboost max os 下的配置"></a>xgboost max os 下的配置</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>根据官方网站自述，XGBoost是一套高效，灵活，便于移植的经过优化的分布式梯度提升库。它实现了梯度提升算法框架。它提供了一套行之有效的并行提升树算法。它部署在如hadoop，MPI之类的主流分布式系统上，可以解决具有数亿样本的大数据问题。<br>XGBoost问世以来，在kaggle等大数据比赛中取得了优异的成绩，是一款主流的机器学习框架。<br><a id="more"></a></p>
+<h2 id="XGBoost-on-MacOS"><a href="#XGBoost-on-MacOS" class="headerlink" title="XGBoost on MacOS"></a>XGBoost on MacOS</h2><p>近期在自己的Mac笔记本上部署了XGBoost，将过程记录如下。<br>XGBoost的安装指导非常友好，达到了Step by Step 的程度，本文也是基本搬运网站内容，具体文档详见[1]。  </p>
 <ul>
-<li>将数据变换为libsvm格式包</li>
-<li>简单数据变换</li>
-<li>考虑利用RBF核函数进行高维映射，RBF核函数为$K(x,y)=exp(-\gamma||x-y||)$</li>
-<li>利用交叉验证，验证出最优的参数$C$,$\gamma$</li>
-<li>利用最好的参数$C$,$\gamma$，训练整个训练集</li>
-<li>利用测试集进行测试        </li>
+<li>XGBoost 是一款具备并行处理能力的算法库，因此，如果本机不具备可以编译openMP的g++,需要先安装gcc，在mac下，利用brew 安装g++，代码如下<code>brew install gcc@8</code></li>
+<li>从git克隆xgboost代码库，注意，这里最好利用命令行下载代码，通过网页界面下载可能确实部分代码，切换到目标路径，输入<code>git clone --recursive https://github.com/dmlc/xgboost</code></li>
+<li>下载完成后，切换至代码路径，首先建立build文件夹，<code>mkdir build</code></li>
+<li>切换至build文件夹，输入<code>CC=gcc-8 CXX=g++-8 cmake ..</code> 生成make文件</li>
+<li>输入<code>make -j4</code> 等待编译完成即可</li>
+<li>编译完成后，会生成dlmc.dylib，后续准备利用python进行算法开发，因此进入python-package文件夹进行算法库部署。</li>
+<li>输入如下指令<code>cd python-package;sudo python setup.py instal</code>进行环境部署，会部署相关模块至python环境中。<br>至此，环境部署完毕。<h2 id="环境验证"><a href="#环境验证" class="headerlink" title="环境验证"></a>环境验证</h2>本机安装的python为anaconda发行版，打开navigator 进入jupyter。新建测试路径，根据官方文档，利用xgboost源码包中的二分类数据进行测试，相关数据在源码路径下的demo/data文件夹内。拷贝至所需路径，测试文件夹截图如下：<br><img src="https://raw.githubusercontent.com/bsq1989/ImageRepo/master/xgboostTest.png" alt="测试文件夹截图"><br>打开测试文件，输入如下代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import xgboost as xgb</span><br><span class="line"></span><br><span class="line">dtrain = xgb.DMatrix(&apos;agaricus.txt.train&apos;)</span><br><span class="line"></span><br><span class="line">print(dtrain)</span><br><span class="line"></span><br><span class="line">dtest = xgb.DMatrix(&apos;agaricus.txt.test&apos;)</span><br><span class="line"></span><br><span class="line">param = &#123;&apos;max_depth&apos;:2, &apos;eta&apos;:1, &apos;silent&apos;:1, &apos;objective&apos;:&apos;binary:logistic&apos; &#125;</span><br><span class="line">num_round = 2</span><br><span class="line"></span><br><span class="line">bst = xgb.train(param, dtrain, num_round)</span><br><span class="line"></span><br><span class="line">print(bst)</span><br><span class="line"></span><br><span class="line">preds = bst.predict(dtest)</span><br><span class="line"></span><br><span class="line">print(preds)</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>对于第一步，如果不用libsvm，可以不做，libsvm对训练数据有指定的格式要求，目前通常的算法开发环境为python系列，目标数据格式满足pandas.DataFrame的要求即可。</p>
-<h2 id="简单数据变换"><a href="#简单数据变换" class="headerlink" title="简单数据变换"></a>简单数据变换</h2><p>原文中，为conduct simple scaling on dataset。其实这里不仅仅包含着字面意义的scaling，而且还包含着对于非数值类型数据的处理。这部分内容其实和其他诸多教材中的数据预处理，清洗内容没有什么区别，而且，对于原始数据，可能还包含着需要丢弃某些特征或者组合某些维度的特征生成新特征的工作。<br>不考虑特征工程的问题，那么数据的预处理可以简单的分为两种类型的数据预处理，数值型与非数值类型。</p>
-<h3 id="数值类型数据预处理"><a href="#数值类型数据预处理" class="headerlink" title="数值类型数据预处理"></a>数值类型数据预处理</h3><p>对于数值类型的数据，首先看有没有缺项，如果有缺项，考虑丢弃缺项数据或者填充缺项数据。填充缺项数据通常是将缺项的数据填充为均值，最大值，或者最小值等典型统计数值。缺项数据处理过后，通常将数据归一化到相同的尺度范围，通常是归一化至0-1。</p>
-<h3 id="分类数据类型数据预处理"><a href="#分类数据类型数据预处理" class="headerlink" title="分类数据类型数据预处理"></a>分类数据类型数据预处理</h3><p>对于分类数据，通常利用将类型编码成数值编码，对于二分类问题，直接编码成0，1即可，对于多分类，假设有m种类型，则通常编码为m维向量，也就是python sklearn库种的one hot encode，热独编码。例如，颜色分类集合{r,g,b}，如果某一颜色值为r,则编码为向量[1,0,0]，如果为g,则编码为{0,1,0}。</p>
-<h2 id="核函数选择"><a href="#核函数选择" class="headerlink" title="核函数选择"></a>核函数选择</h2><p>svm常用的核函数有如下四中：  </p>
-<ul>
-<li>线性核函数:$K(x_i,x_j)=x_i^Tx_j$  </li>
-<li>多项式核函数:$K(x_i,x_j)=(\gamma x_i^Tx_j+r)^d,\gamma \gt0$</li>
-<li>rbf核函数:$K(x_i,x_j)=exp(-\gamma||x_i-x_j||^2),\gamma \gt 0$</li>
-<li>sigmoid 激活函数:$K(x_i,x_j)=tanh(\gamma x_i^Tx_j+r),\gamma \gt0$</li>
-</ul>
-<p>在文中，核函数首推RBF核函数，原因如下：</p>
-<ul>
-<li>具备处理非线性关系分类的能力</li>
-<li>线性模型是RBF模型的特例情况</li>
-<li>与多项式模型相比，具有更少的超参数</li>
-<li>在求解过程中，数值问题更少，例如：如果多项式模型的内部的值小于1，在d较大的情况之下，计算值偏小，有可能趋于0，而内部的值如果较大，计算值有可能趋于无穷</li>
-<li>在某些情况下，sigmoid函数不可用</li>
-</ul>
-<h2 id="模型选择"><a href="#模型选择" class="headerlink" title="模型选择"></a>模型选择</h2><h3 id="交叉验证"><a href="#交叉验证" class="headerlink" title="交叉验证"></a>交叉验证</h3><p>k-fold交叉验证，首先，将全部样本划分成k个大小的相等的样本子集；依次便利这k个子集，每次把当前子集作为验证集，其余所有子集作为训练集，进行模型的训练和评估。最后把k次评估指标的平均值作为最终的评估指标。在实际实验中，k通常取10。</p>
-<h3 id="Grid-search-网格搜索"><a href="#Grid-search-网格搜索" class="headerlink" title="Grid-search 网格搜索"></a>Grid-search 网格搜索</h3><p>对于使用rbf核函数的svm算法，其中有两个参数需要确定，$C,\gamma$，文中推荐使用网格搜索，以及交叉验证，来最终确定参数的选取。所谓网格搜索，也就是规定$C,\gamma$两个变量的取值范围，这样就形成了，一个二维取值空间，而每一维其实是一个离散的数值序列，这样就取得了一个二维网格，每一个网格对应了一对超参数的取值，获得取值之后，利用交叉验证来取得该对超参数的评估指标，选出评估指标最高的一对超参数，作为模型的超参数。<br>网格搜索可能带来比较大的计算量，对于这种情况，文中推荐，首先利用稀疏网格，来确定评估指标较好的一个区域，再利用较为细致的网格，在此区域内进行参数选择。</p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1]Hsu C , Chang C , Lin C . A practical guide to support vector classification[J]. 臺北市:國立臺灣大學資訊工程學系, 2010, 67(5).</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>[1]<a href="https://xgboost.readthedocs.io/en/latest/build.html#building-on-osx" target="_blank" rel="noopener">https://xgboost.readthedocs.io/en/latest/build.html#building-on-osx</a><br>[2]<a href="https://xgboost.readthedocs.io/en/latest/index.html" target="_blank" rel="noopener">https://xgboost.readthedocs.io/en/latest/index.html</a></p>
 
       
     </div>
@@ -406,9 +384,9 @@ i=1\cdots N\\
       
         <div class="post-tags">
           
-            <a href="/tags/svm/" rel="tag"># svm</a>
+            <a href="/tags/xgboost/" rel="tag"># xgboost</a>
           
-            <a href="/tags/guid/" rel="tag"># guid</a>
+            <a href="/tags/mac-os/" rel="tag"># mac os</a>
           
         </div>
       
@@ -421,8 +399,8 @@ i=1\cdots N\\
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/29/opencv_mac/" rel="next" title="Mac下配置opencv环境">
-                <i class="fa fa-chevron-left"></i> Mac下配置opencv环境
+              <a href="/2019/06/10/svmguid/" rel="next" title="svm 指南">
+                <i class="fa fa-chevron-left"></i> svm 指南
               </a>
             
           </div>
@@ -430,10 +408,6 @@ i=1\cdots N\\
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/18/xgboost_install/" rel="prev" title="xgboost 安装">
-                xgboost 安装 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -565,7 +539,7 @@ i=1\cdots N\\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#svm-模型训练指南-1"><span class="nav-number">1.</span> <span class="nav-text">svm 模型训练指南[1]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐步骤"><span class="nav-number">1.1.</span> <span class="nav-text">推荐步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单数据变换"><span class="nav-number">1.2.</span> <span class="nav-text">简单数据变换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数值类型数据预处理"><span class="nav-number">1.2.1.</span> <span class="nav-text">数值类型数据预处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分类数据类型数据预处理"><span class="nav-number">1.2.2.</span> <span class="nav-text">分类数据类型数据预处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核函数选择"><span class="nav-number">1.3.</span> <span class="nav-text">核函数选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型选择"><span class="nav-number">1.4.</span> <span class="nav-text">模型选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#交叉验证"><span class="nav-number">1.4.1.</span> <span class="nav-text">交叉验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Grid-search-网格搜索"><span class="nav-number">1.4.2.</span> <span class="nav-text">Grid-search 网格搜索</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">2.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#xgboost-max-os-下的配置"><span class="nav-number">1.</span> <span class="nav-text">xgboost max os 下的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XGBoost-on-MacOS"><span class="nav-number">1.2.</span> <span class="nav-text">XGBoost on MacOS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境验证"><span class="nav-number">1.3.</span> <span class="nav-text">环境验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">1.4.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></div>
             
 
           </div>
