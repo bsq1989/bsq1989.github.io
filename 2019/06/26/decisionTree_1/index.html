@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="svm,guid,">
+  <meta name="keywords" content="decision Tree,基本概念,">
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="svm 模型训练指南[1]学习了svm模型后，上手实际的数据进行模型训练，在网上找到了libsvm作者给出的支持向量机模型训练指南，其中，针对初学者，给出了训练出较好的svm模型的实践方法。">
-<meta name="keywords" content="svm,guid">
+<meta name="description" content="决策树相关基本概念决策树是一种基本的分类与回归方法，其呈树形结构，在分类问题中，表示基于特征对实例进行分类的过程，在回归问题中，则表示基于特征对实例对应取值的回归过程。可以认为其是if-else规则的合集，也可认为是定义在特征空间与类空间的条件概率分布[1]。决策树的典型形态如下图所示如图所示，圆形形状节点为内部分类节点，其具至少两个子节点，而矩形节点为叶子节点，决策时到达叶子节点后不会再向下分化">
+<meta name="keywords" content="decision Tree,基本概念">
 <meta property="og:type" content="article">
-<meta property="og:title" content="svm 指南">
-<meta property="og:url" content="http://yoursite.com/2019/06/10/svmguid/index.html">
+<meta property="og:title" content="决策树基本概念">
+<meta property="og:url" content="http://yoursite.com/2019/06/26/decisionTree_1/index.html">
 <meta property="og:site_name" content="Bao‘s Notes">
-<meta property="og:description" content="svm 模型训练指南[1]学习了svm模型后，上手实际的数据进行模型训练，在网上找到了libsvm作者给出的支持向量机模型训练指南，其中，针对初学者，给出了训练出较好的svm模型的实践方法。">
+<meta property="og:description" content="决策树相关基本概念决策树是一种基本的分类与回归方法，其呈树形结构，在分类问题中，表示基于特征对实例进行分类的过程，在回归问题中，则表示基于特征对实例对应取值的回归过程。可以认为其是if-else规则的合集，也可认为是定义在特征空间与类空间的条件概率分布[1]。决策树的典型形态如下图所示如图所示，圆形形状节点为内部分类节点，其具至少两个子节点，而矩形节点为叶子节点，决策时到达叶子节点后不会再向下分化">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-12T15:41:11.054Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/bsq1989/ImageRepo/master/%E5%86%B3%E7%AD%96%E6%A0%91.png">
+<meta property="og:updated_time" content="2019-06-26T14:39:15.731Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="svm 指南">
-<meta name="twitter:description" content="svm 模型训练指南[1]学习了svm模型后，上手实际的数据进行模型训练，在网上找到了libsvm作者给出的支持向量机模型训练指南，其中，针对初学者，给出了训练出较好的svm模型的实践方法。">
+<meta name="twitter:title" content="决策树基本概念">
+<meta name="twitter:description" content="决策树相关基本概念决策树是一种基本的分类与回归方法，其呈树形结构，在分类问题中，表示基于特征对实例进行分类的过程，在回归问题中，则表示基于特征对实例对应取值的回归过程。可以认为其是if-else规则的合集，也可认为是定义在特征空间与类空间的条件概率分布[1]。决策树的典型形态如下图所示如图所示，圆形形状节点为内部分类节点，其具至少两个子节点，而矩形节点为叶子节点，决策时到达叶子节点后不会再向下分化">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/bsq1989/ImageRepo/master/%E5%86%B3%E7%AD%96%E6%A0%91.png">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/10/svmguid/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/26/decisionTree_1/">
 
 
 
 
 
-  <title>svm 指南 | Bao‘s Notes</title>
+  <title>决策树基本概念 | Bao‘s Notes</title>
   
 
 
@@ -263,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/10/svmguid/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/26/decisionTree_1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="baoshiqiu">
@@ -280,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">svm 指南</h1>
+          <h1 class="post-title" itemprop="name headline">决策树基本概念</h1>
         
 
         <div class="post-meta">
@@ -292,8 +294,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-10T22:30:00+08:00">
-                2019-06-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-26T09:18:00+08:00">
+                2019-06-26
               </time>
             
 
@@ -352,43 +354,33 @@
       
 
       
-        <h1 id="svm-模型训练指南-1"><a href="#svm-模型训练指南-1" class="headerlink" title="svm 模型训练指南[1]"></a>svm 模型训练指南<sup>[1]</sup></h1><p>学习了svm模型后，上手实际的数据进行模型训练，在网上找到了libsvm作者给出的支持向量机模型训练指南，其中，针对初学者，给出了训练出较好的svm模型的实践方法。<br><a id="more"></a></p>
-<h2 id="推荐步骤"><a href="#推荐步骤" class="headerlink" title="推荐步骤"></a>推荐步骤</h2><p>svm最优化问题定义如下：</p>
-<script type="math/tex; mode=display">
-\min_{w,C,\xi} \frac{1}{2}w^Tw+C\sum_{i=1}^{N}\xi_i</script><script type="math/tex; mode=display">
-s.t.\quad y_i(w\cdot \phi(x_i)+b) \geq 1-\xi_i\\
-i=1\cdots N\\
-\xi_i \geq 0</script><p>原文推荐的步骤如下：  </p>
+        <h1 id="决策树相关基本概念"><a href="#决策树相关基本概念" class="headerlink" title="决策树相关基本概念"></a>决策树相关基本概念</h1><p>决策树是一种基本的分类与回归方法，其呈树形结构，在分类问题中，表示基于特征对实例进行分类的过程，在回归问题中，则表示基于特征对实例对应取值的回归过程。可以认为其是if-else规则的合集，也可认为是定义在特征空间与类空间的条件概率分布[1]。决策树的典型形态如下图所示<br><img src="https://raw.githubusercontent.com/bsq1989/ImageRepo/master/%E5%86%B3%E7%AD%96%E6%A0%91.png" alt="决策树典型形状"><br>如图所示，圆形形状节点为内部分类节点，其具至少两个子节点，而矩形节点为叶子节点，决策时到达叶子节点后不会再向下分化，表示最终的分类结果或者回归值。</p>
+<h2 id="决策树的定义"><a href="#决策树的定义" class="headerlink" title="决策树的定义"></a>决策树的定义</h2><p>根据上述形态，给出决策树的定义如下：</p>
+<blockquote>
+<p>定义：决策树是一种描述基于特征对实例进行分类的树形结构。其由节点和有向边组成，其中，节点分为两类，一类为内部节点，表示基于一个特征的分类条件，一类为叶子节点，表示最终的分类结果。<br><a id="more"></a></p>
+<h2 id="决策树的学习"><a href="#决策树的学习" class="headerlink" title="决策树的学习"></a>决策树的学习</h2><p>决策树的学习过程是在特征空间中找出最佳空间划分的过程，通过求得使损失函数取得极小值得划分结构，求取决策树的结构；而确定内部结构就是在决策树的每一层选的分类节点位置选取合适的特征。经过这个过程的决策树往往可以对特征空间数据具有比较好的拟合能力，但是欠缺一定的泛化能力，为了减小决策树的过拟合，还需要对决策树进行剪枝，也即去掉一些内部节点，使其结构上变得简单，也可以理解为弱化某些分类结果的特征匹配条件，从而达到提升泛化能力的目的。<br>由此可以得出决策树学习的主要步骤：</p>
 <ul>
-<li>将数据变换为libsvm格式包</li>
-<li>简单数据变换</li>
-<li>考虑利用RBF核函数进行高维映射，RBF核函数为$K(x,y)=exp(-\gamma||x-y||)$</li>
-<li>利用交叉验证，验证出最优的参数$C$,$\gamma$</li>
-<li>利用最好的参数$C$,$\gamma$，训练整个训练集</li>
-<li>利用测试集进行测试        </li>
+<li>特征选择</li>
+<li>决策树生成</li>
+<li>决策树剪枝<h2 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h2>特征空间往往存在多个特征，找出最合适的特征需要为特征定义一个度量，将特征的优劣进行量化，再比较出基于现有条件更适合分类的特征。衡量特征是否合适的两个指标通常为信息增益或信息增益比。<h3 id="信息增益与信息增益比"><a href="#信息增益与信息增益比" class="headerlink" title="信息增益与信息增益比"></a>信息增益与信息增益比</h3><h4 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h4></li>
+<li>1 熵的概念:<br>  熵是信息论与概率统计中，表示随机变量不确定度的度量。设$X$是一个取有限个值的离散随机变量，其概率分布为<script type="math/tex; mode=display">
+  P(X=x_i)=p_i, i=1,2,\dots,n</script>  则随机变量$X$的熵定义为<script type="math/tex; mode=display">
+  H(X)=-\sum_{i=1}^{n}p_ilog(p_i)</script>  熵越大，随机变量的不确定性越大。</li>
+<li>2 条件熵的概念<br>  有随机变量$(X,Y)$,其联合概率分布为：    <script type="math/tex; mode=display">
+  P(X=x_i,Y=y_i)=p_{ij}, i=1,2,\cdots，n;j=1,2,\cdots,m</script>  随机变量$X$给定的条件下的随机变量$Y$的条件熵，$H(X|Y)$定义为:<script type="math/tex; mode=display">
+  H(X|Y)=\sum_{i=1}^{n}p_iH(Y|X=x_i)</script>  这里，$p_i=P(X=x_i),i=1,2,\cdots,n$<br>  条件熵表示已知随机变量$X$的基础知识，随机变量$Y$的不确定性。</li>
+<li>3 信息增益<br>  特征$A$对训练数据集$D$的信息增益记为$g(D,A)$，定义如下:<script type="math/tex; mode=display">
+  g(D,A)=H(D)-H(D|A)</script></li>
+<li>4 信息增益的算法<br>  设训练数据集为$D,|D|$表示其样本容量，即样本个数。设有$K$个类$C_k,k=1,2,\cdots,K,|C_k|$为属于类$C_k$的样本个数，$\sum_{k=1}^{K}|C_k|=|D|$。设特征$A$有n个不同的取值${a_1,a_2,\dots,a_n}$,根据特征$A$将$D$划分为n个不同的子集，${D_1,D_2,\dots,D_n}$，$|D_i|$为$D_i$的样本个数，$\sum_{i=1}^{n}|D_i|=|D|$。记子集$D_i$中属于类$C_k$的样本的集合为$D_{ik}$，即$D_{ik}=D_i\bigcap C_k$,$|D_{ik}|$为$D_{ik}$的样本个数。于是，计算信息增益的算法如下<ul>
+<li>1 计算数据集$D$ 的熵$H(D)=-\sum_{k=1}^{K}\frac{|C_k|}{|D|}log_2\frac{|C_k|}{|D|}$</li>
+<li>2 计算特征$A$对数据集$D$的条件熵$H(D|A)$<script type="math/tex; mode=display">
+H(D|A)=\sum_{i=1}^{n}\frac{|D_i|}{|D|}H(D)=-\sum_{i=1}^{n}\frac{|D_i|}{|D|}\sum_{k=1}^{K}\frac{|D_{ik}|}{|D_i|}log_2\frac{|D_{ik}|}{|D_i|}</script></li>
+<li>3 计算信息增益$g(D,A)=H(D)-H(D|A)$<h4 id="信息增益比"><a href="#信息增益比" class="headerlink" title="信息增益比"></a>信息增益比</h4>以信息增益作为划分训练数据集的特征，存在偏向于选择取值较多的特征的问题，使用信息增益比对该类问题进行校正，信息增益比定义如下<script type="math/tex; mode=display">
+g_R(D,A)=\frac{g(D,A)}{H_A(D)}</script>其中$H_A(D)=-\sum_{i=1}^{n}\frac{|D_i|}{|D|}log_2\frac{|D_i|}{|D|}$<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2>[1] 李航. 统计学习方法[M]. 2012.</li>
 </ul>
-<p>对于第一步，如果不用libsvm，可以不做，libsvm对训练数据有指定的格式要求，目前通常的算法开发环境为python系列，目标数据格式满足pandas.DataFrame的要求即可。</p>
-<h2 id="简单数据变换"><a href="#简单数据变换" class="headerlink" title="简单数据变换"></a>简单数据变换</h2><p>原文中，为conduct simple scaling on dataset。其实这里不仅仅包含着字面意义的scaling，而且还包含着对于非数值类型数据的处理。这部分内容其实和其他诸多教材中的数据预处理，清洗内容没有什么区别，而且，对于原始数据，可能还包含着需要丢弃某些特征或者组合某些维度的特征生成新特征的工作。<br>不考虑特征工程的问题，那么数据的预处理可以简单的分为两种类型的数据预处理，数值型与非数值类型。</p>
-<h3 id="数值类型数据预处理"><a href="#数值类型数据预处理" class="headerlink" title="数值类型数据预处理"></a>数值类型数据预处理</h3><p>对于数值类型的数据，首先看有没有缺项，如果有缺项，考虑丢弃缺项数据或者填充缺项数据。填充缺项数据通常是将缺项的数据填充为均值，最大值，或者最小值等典型统计数值。缺项数据处理过后，通常将数据归一化到相同的尺度范围，通常是归一化至0-1。</p>
-<h3 id="分类数据类型数据预处理"><a href="#分类数据类型数据预处理" class="headerlink" title="分类数据类型数据预处理"></a>分类数据类型数据预处理</h3><p>对于分类数据，通常利用将类型编码成数值编码，对于二分类问题，直接编码成0，1即可，对于多分类，假设有m种类型，则通常编码为m维向量，也就是python sklearn库种的one hot encode，热独编码。例如，颜色分类集合{r,g,b}，如果某一颜色值为r,则编码为向量[1,0,0]，如果为g,则编码为{0,1,0}。</p>
-<h2 id="核函数选择"><a href="#核函数选择" class="headerlink" title="核函数选择"></a>核函数选择</h2><p>svm常用的核函数有如下四中：  </p>
-<ul>
-<li>线性核函数:$K(x_i,x_j)=x_i^Tx_j$  </li>
-<li>多项式核函数:$K(x_i,x_j)=(\gamma x_i^Tx_j+r)^d,\gamma \gt0$</li>
-<li>rbf核函数:$K(x_i,x_j)=exp(-\gamma||x_i-x_j||^2),\gamma \gt 0$</li>
-<li>sigmoid 激活函数:$K(x_i,x_j)=tanh(\gamma x_i^Tx_j+r),\gamma \gt0$</li>
+</li>
 </ul>
-<p>在文中，核函数首推RBF核函数，原因如下：</p>
-<ul>
-<li>具备处理非线性关系分类的能力</li>
-<li>线性模型是RBF模型的特例情况</li>
-<li>与多项式模型相比，具有更少的超参数</li>
-<li>在求解过程中，数值问题更少，例如：如果多项式模型的内部的值小于1，在d较大的情况之下，计算值偏小，有可能趋于0，而内部的值如果较大，计算值有可能趋于无穷</li>
-<li>在某些情况下，sigmoid函数不可用</li>
-</ul>
-<h2 id="模型选择"><a href="#模型选择" class="headerlink" title="模型选择"></a>模型选择</h2><h3 id="交叉验证"><a href="#交叉验证" class="headerlink" title="交叉验证"></a>交叉验证</h3><p>k-fold交叉验证，首先，将全部样本划分成k个大小的相等的样本子集；依次便利这k个子集，每次把当前子集作为验证集，其余所有子集作为训练集，进行模型的训练和评估。最后把k次评估指标的平均值作为最终的评估指标。在实际实验中，k通常取10。</p>
-<h3 id="Grid-search-网格搜索"><a href="#Grid-search-网格搜索" class="headerlink" title="Grid-search 网格搜索"></a>Grid-search 网格搜索</h3><p>对于使用rbf核函数的svm算法，其中有两个参数需要确定，$C,\gamma$，文中推荐使用网格搜索，以及交叉验证，来最终确定参数的选取。所谓网格搜索，也就是规定$C,\gamma$两个变量的取值范围，这样就形成了，一个二维取值空间，而每一维其实是一个离散的数值序列，这样就取得了一个二维网格，每一个网格对应了一对超参数的取值，获得取值之后，利用交叉验证来取得该对超参数的评估指标，选出评估指标最高的一对超参数，作为模型的超参数。<br>网格搜索可能带来比较大的计算量，对于这种情况，文中推荐，首先利用稀疏网格，来确定评估指标较好的一个区域，再利用较为细致的网格，在此区域内进行参数选择。</p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1]Hsu C , Chang C , Lin C . A practical guide to support vector classification[J]. 臺北市:國立臺灣大學資訊工程學系, 2010, 67(5).</p>
+</blockquote>
 
       
     </div>
@@ -406,9 +398,9 @@ i=1\cdots N\\
       
         <div class="post-tags">
           
-            <a href="/tags/svm/" rel="tag"># svm</a>
+            <a href="/tags/decision-Tree/" rel="tag"># decision Tree</a>
           
-            <a href="/tags/guid/" rel="tag"># guid</a>
+            <a href="/tags/基本概念/" rel="tag"># 基本概念</a>
           
         </div>
       
@@ -421,8 +413,8 @@ i=1\cdots N\\
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/29/opencv_mac/" rel="next" title="Mac下配置opencv环境">
-                <i class="fa fa-chevron-left"></i> Mac下配置opencv环境
+              <a href="/2019/06/18/xgboost_install/" rel="next" title="xgboost 安装">
+                <i class="fa fa-chevron-left"></i> xgboost 安装
               </a>
             
           </div>
@@ -430,10 +422,6 @@ i=1\cdots N\\
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/18/xgboost_install/" rel="prev" title="xgboost 安装">
-                xgboost 安装 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -565,7 +553,7 @@ i=1\cdots N\\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#svm-模型训练指南-1"><span class="nav-number">1.</span> <span class="nav-text">svm 模型训练指南[1]</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐步骤"><span class="nav-number">1.1.</span> <span class="nav-text">推荐步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单数据变换"><span class="nav-number">1.2.</span> <span class="nav-text">简单数据变换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数值类型数据预处理"><span class="nav-number">1.2.1.</span> <span class="nav-text">数值类型数据预处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分类数据类型数据预处理"><span class="nav-number">1.2.2.</span> <span class="nav-text">分类数据类型数据预处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核函数选择"><span class="nav-number">1.3.</span> <span class="nav-text">核函数选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型选择"><span class="nav-number">1.4.</span> <span class="nav-text">模型选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#交叉验证"><span class="nav-number">1.4.1.</span> <span class="nav-text">交叉验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Grid-search-网格搜索"><span class="nav-number">1.4.2.</span> <span class="nav-text">Grid-search 网格搜索</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">2.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#决策树相关基本概念"><span class="nav-number">1.</span> <span class="nav-text">决策树相关基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树的定义"><span class="nav-number">1.1.</span> <span class="nav-text">决策树的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树的学习"><span class="nav-number">1.2.</span> <span class="nav-text">决策树的学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特征选择"><span class="nav-number">1.3.</span> <span class="nav-text">特征选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#信息增益与信息增益比"><span class="nav-number">1.3.1.</span> <span class="nav-text">信息增益与信息增益比</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#信息增益"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">信息增益</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#信息增益比"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">信息增益比</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">1.4.</span> <span class="nav-text">参考文献</span></a></li></ol></li></ol></div>
             
 
           </div>
