@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="基本概念,线性模型,svm,软间隔,">
+  <meta name="keywords" content="decision Tree,基本概念,决策树生成,决策树剪枝,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Support Vector Machine 支持向量机(2)—powered by 《统计学习方法》.李航   简述在svm1笔记中，对svm的基本概念，以及其背后的数学含义进行了推倒与记录，其中所阐述的定义，全部基于一个前提-数据集线性可分。然而对于现实中的实际问题，很少有数据集是线性可分的，为了使svm可以在线性不可分数据集下工作，算法研究人员为svm引入软间隔以及软间隔最大相关概念。">
-<meta name="keywords" content="基本概念,线性模型,svm,软间隔">
+<meta name="description" content="决策树的生成与剪枝决策树的生成[1]ID3算法 输入：训练数据集$D$,特征集$A$,阈值$\epsilon$">
+<meta name="keywords" content="decision Tree,基本概念,决策树生成,决策树剪枝">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Support Vector Machine 支持向量机 （2）">
-<meta property="og:url" content="http://yoursite.com/2019/05/08/svm2/index.html">
+<meta property="og:title" content="决策树的生成与剪枝">
+<meta property="og:url" content="http://yoursite.com/2019/06/30/decisionTree_2/index.html">
 <meta property="og:site_name" content="Bao‘s Notes">
-<meta property="og:description" content="Support Vector Machine 支持向量机(2)—powered by 《统计学习方法》.李航   简述在svm1笔记中，对svm的基本概念，以及其背后的数学含义进行了推倒与记录，其中所阐述的定义，全部基于一个前提-数据集线性可分。然而对于现实中的实际问题，很少有数据集是线性可分的，为了使svm可以在线性不可分数据集下工作，算法研究人员为svm引入软间隔以及软间隔最大相关概念。">
+<meta property="og:description" content="决策树的生成与剪枝决策树的生成[1]ID3算法 输入：训练数据集$D$,特征集$A$,阈值$\epsilon$">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-13T15:07:36.000Z">
+<meta property="og:updated_time" content="2019-06-29T17:45:49.249Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Support Vector Machine 支持向量机 （2）">
-<meta name="twitter:description" content="Support Vector Machine 支持向量机(2)—powered by 《统计学习方法》.李航   简述在svm1笔记中，对svm的基本概念，以及其背后的数学含义进行了推倒与记录，其中所阐述的定义，全部基于一个前提-数据集线性可分。然而对于现实中的实际问题，很少有数据集是线性可分的，为了使svm可以在线性不可分数据集下工作，算法研究人员为svm引入软间隔以及软间隔最大相关概念。">
+<meta name="twitter:title" content="决策树的生成与剪枝">
+<meta name="twitter:description" content="决策树的生成与剪枝决策树的生成[1]ID3算法 输入：训练数据集$D$,特征集$A$,阈值$\epsilon$">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/08/svm2/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/30/decisionTree_2/">
 
 
 
 
 
-  <title>Support Vector Machine 支持向量机 （2） | Bao‘s Notes</title>
+  <title>决策树的生成与剪枝 | Bao‘s Notes</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/08/svm2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/30/decisionTree_2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="baoshiqiu">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Support Vector Machine 支持向量机 （2）</h1>
+          <h1 class="post-title" itemprop="name headline">决策树的生成与剪枝</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-08T09:30:00+08:00">
-                2019-05-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-30T12:13:00+08:00">
+                2019-06-30
               </time>
             
 
@@ -352,70 +352,43 @@
       
 
       
-        <h1 id="Support-Vector-Machine-支持向量机-2"><a href="#Support-Vector-Machine-支持向量机-2" class="headerlink" title="Support Vector Machine 支持向量机(2)"></a>Support Vector Machine 支持向量机(2)</h1><p>—powered by 《统计学习方法》.李航  </p>
-<h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>在svm1笔记中，对svm的基本概念，以及其背后的数学含义进行了推倒与记录，其中所阐述的定义，全部基于一个前提-<em>数据集线性可分</em>。然而对于现实中的实际问题，很少有数据集是线性可分的，为了使svm可以在线性不可分数据集下工作，算法研究人员为svm引入<em>软间隔</em>以及<em>软间隔最大</em>相关概念。<br><a id="more"></a></p>
-<h2 id="软间隔"><a href="#软间隔" class="headerlink" title="软间隔"></a>软间隔</h2><p>假定给定某特征空间数据集</p>
+        <h1 id="决策树的生成与剪枝"><a href="#决策树的生成与剪枝" class="headerlink" title="决策树的生成与剪枝"></a>决策树的生成与剪枝</h1><h2 id="决策树的生成-1"><a href="#决策树的生成-1" class="headerlink" title="决策树的生成[1]"></a>决策树的生成[1]</h2><h3 id="ID3算法"><a href="#ID3算法" class="headerlink" title="ID3算法"></a>ID3算法</h3><ul>
+<li>输入：训练数据集$D$,特征集$A$,阈值$\epsilon$<a id="more"></a></li>
+<li>输出：决策树$T$<ul>
+<li>1 若$D$中所有实例均属于同一类$C_k$，则$T$为单节点，并将$C_k$作为该节点的标记类</li>
+<li>2 若$A=\emptyset$,则$T$为单节点，并将$D$中实例数目最大的类型$C_k$作为该节点的类标记，返回$T$</li>
+<li>3 否则，按照信息增益的算法计算<em>信息增益</em>，选择信息增益最大的特征$A_g$.</li>
+<li>4 如果$A_g$的信息增益小于阈值$\epsilon$，则置$T$为单节点树，并将$D$中实例数目最大的类型$C_k$作为该节点的类标记，返回$T$</li>
+<li>5 否则，对$A_g$的每一个可能值$a_i$,依$A_g=a_i$将$D$分割为若干非空子集$D_i$，将$D_i$中的实例数量最大的类作为标记，构建子节点，由结点及其子节点构成树$T$，返回$T$</li>
+<li>6 对于第i个子节点，以$D_i$为训练集，以$A-{A_g}$为特征集，递归调用1-5步骤，得到子树$T_i$，返回$T_i$</li>
+</ul>
+</li>
+</ul>
+<h3 id="C4-5生成算法"><a href="#C4-5生成算法" class="headerlink" title="C4.5生成算法"></a>C4.5生成算法</h3><ul>
+<li>输入：训练数据集$D$,特征集$A$,阈值$\epsilon$</li>
+<li>输出：决策树$T$<ul>
+<li>1 若$D$中所有实例均属于同一类$C_k$，则$T$为单节点，并将$C_k$作为该节点的标记类</li>
+<li>2 若$A=\emptyset$,则$T$为单节点，并将$D$中实例数目最大的类型$C_k$作为该节点的类标记，返回$T$</li>
+<li>3 否则，按照信息增益的算法计算<em>信息增益比</em>，选择信息增益比最大的特征$A_g$.</li>
+<li>4 如果$A_g$的信息增益比小于阈值$\epsilon$，则置$T$为单节点树，并将$D$中实例数目最大的类型$C_k$作为该节点的类标记，返回$T$</li>
+<li>5 否则，对$A_g$的每一个可能值$a_i$,依$A_g=a_i$将$D$分割为若干非空子集$D_i$，将$D_i$中的实例数量最大的类作为标记，构建子节点，由结点及其子节点构成树$T$，返回$T$</li>
+<li>6 对于第i个子节点，以$D_i$为训练集，以$A-{A_g}$为特征集，递归调用1-5步骤，得到子树$T_i$，返回$T_i$</li>
+</ul>
+</li>
+</ul>
+<h2 id="决策树的剪枝"><a href="#决策树的剪枝" class="headerlink" title="决策树的剪枝"></a>决策树的剪枝</h2><h3 id="损失函数的定义"><a href="#损失函数的定义" class="headerlink" title="损失函数的定义"></a>损失函数的定义</h3><p>设决策树$T$的叶节点个数为$|T|$,$t$是树节点$T$的叶节点，该叶节点有$N_t$个样本点，样本点中，共有$K$类，每个类的样本点有$N_{tk}$个，$\sum_{k=1}^{K}N_{tk}=N_t$。则该决策树的损失函数为  </p>
 <script type="math/tex; mode=display">
-\Gamma=\{(x_1,y_1),(x_2,y_2),\dots,(x_n,y_n)\}</script><p>对于上述数据集$1\leq i\leq n,y_i\in \{ 1,-1\}$,$x_i\in R^n$。其中，$x_i$为数据集中某特征向量，$y_i$为其对应的标签，整个数据集不是线性可分的，对于通常情况，数据集中只有部分点是线性不可分的，剩余的点为线性可分。对于数据中某点$(x_i,y_i)$,其几何间隔：</p>
+C_\alpha(T)=\sum_{t=1}^{|T|}N_tH_t(T)+\alpha|T|</script><p>上述公式中，$\alpha$为调和系数，$H_t(T)=-\sum_{k}\frac{N_{tk}}{N_t}\log\frac{N_{tk}}{N_t}$为叶子节点$t$上的经验熵。<br>记$C(T)=\sum_{t=1}^{|T|}N_tH_t(T)=-\sum_{t=1}^{|T|}\sum_{k}N_{tk}\log\frac{N_{tk}}{N_t}$。这时，损失函数为如下形式：</p>
 <script type="math/tex; mode=display">
-\gamma=y_i(\frac{w^\ast}{||w||}\cdot x_i+\frac b{||w||})</script><p>线性不可分，意味着这些点无法满足$\gamma \geq 1$的条件。对于满足$\gamma \geq 1$的几何间隔，我们称之为<em>硬间隔</em>，相应地，对于$\gamma \leq 1$的间隔，我们称之为<em>软间隔</em>。</p>
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>对于无法满足硬间隔的数据，在之前定义的损失函数无法为其找到合适的分离超平面，因此，需要对硬间隔约束适当放宽。这里，我们为其引入松弛变量$\xi，\xi _i\geq 0$,使数据集内数据满足:</p>
-<script type="math/tex; mode=display">
-\gamma_i=y_i(\frac{w^\ast}{||w||}\cdot x_i+\frac b{||w||})\geq1-\xi_i,i\in 1\dots n，\xi_i \geq0 \tag{1}</script><p>那么，对于支持向量机算法，目标函数由$\frac{1}{2}||w||^2$变为如下形式</p>
-<script type="math/tex; mode=display">
-\min_{w,b,\xi} \frac{1}{2}||w||^2+C\sum_{i=1}^{n}\xi_i，,i\in 1\dots n，\xi_i \geq0 \tag{2}</script><p>其中，$C$为惩罚参数。这里的目标函数包含了两层含义，其一为间隔最小，其二为误分类的点最少，$C$为二者的调和系数。<br>在(2) 定义基础上，可以得出，对于线性不可分数据集，我们的目标是软间隔最大化，那么线性不可分支持向量机模型可以定义为如下凸优化问题：</p>
-<script type="math/tex; mode=display">
-\min_{w,b,\xi} \frac{1}{2}||w||^2+C\sum_{i=1}^{n}\xi_i\\
-s.t\quad y_i(w\cdot x_i+b)\geq1-\xi_i\\
-\xi_i \geq0\\
-i\in 1\dots n\tag{3}</script><h2 id="对偶学习算法推倒"><a href="#对偶学习算法推倒" class="headerlink" title="对偶学习算法推倒"></a>对偶学习算法推倒</h2><p>首先，建立广义拉格朗日函数，由于有两个约束函数，所以分别选取$\alpha,\mu$作为调和系数。</p>
-<script type="math/tex; mode=display">
-L(w,b,\xi,\alpha,\mu)=\frac{1}{2}||w||^2+C\sum_{i=1}^{n}\xi_i-\alpha\cdot(y\cdot((w\cdot x)+b)-1+\xi)-\mu\cdot\xi\\
-=\frac{1}{2}||w||^2+C\sum_{i=1}^{n}\xi_i-\sum_{i=1}^{n}(\alpha_iy_iw_ix_i-\alpha_i\xi_i+\alpha_iy_ib)+\sum_{i=1}^{n}\alpha_i-\sum_{i=1}^{n}\mu_i\xi_i\tag{4}</script><p>对偶问题为拉格朗日函数的极大极小问题,如下：</p>
-<script type="math/tex; mode=display">
-\max_{\alpha,\mu}\min_{w,b,\xi}L(w,b,\xi,\alpha,\mu) \tag{5}</script><p>先求极小问题，在函数取得极小值处，一阶导数为0.</p>
-<script type="math/tex; mode=display">
-\nabla_{w}L=w-\sum_{i=1}^{n}a_iy_ix_i=0\\
-\nabla_{b}L=\sum_{i=1}^{n}a_iy_i=0\\
-\nabla_{\xi}L=C-\alpha-\mu=0\tag{6}</script><p>由上式得：</p>
-<script type="math/tex; mode=display">
-w=\sum_{i=1}^{n}a_iy_ix_i\\
-\sum_{i=1}^{n}a_iy_i=0\\
-C-\alpha_i-\mu_i=0</script><p>带入（5）中，可得：</p>
-<script type="math/tex; mode=display">
-\max_{\alpha,\mu}=\frac{1}{2}\sum_{i=1}^{n}\sum_{j=1}^{n}a_ia_jy_iy_jx_ix_j-\sum_{i=1}^{n}\sum_{j=1}^{n}a_ia_jy_iy_jx_ix_j+\sum_{i=1}^{n}a_i\\
-=-\frac{1}{2}\sum_{i=1}^{n}\sum_{j=1}^{n}a_ia_jy_iy_jx_ix_j+\sum_{i=1}^{n}a_i\tag{7}</script><p>那么（7）即为对偶问题，完整描述如下：</p>
-<script type="math/tex; mode=display">
-\max_{\alpha,\mu}=-\frac{1}{2}\sum_{i=1}^{n}\sum_{j=1}^{n}a_ia_jy_iy_jx_ix_j+\sum_{i=1}^{n}a_i\\
-s.t.\quad \alpha_i\geq0\\
-\sum_{i=1}^{n}a_iy_i=0\\
-C-a_i-\mu_i=0\\
-\mu_i\geq0,i\in 1\dots n\tag{8}</script><p>其中，后两条约束条件可以转换为</p>
-<script type="math/tex; mode=display">
-0\leq a_i\leq C</script><p>设对偶问题（8）的一个解为$\alpha^\ast=(\alpha^\ast_1,\alpha^\ast_2,\alpha^\ast_3,\dots,\alpha^\ast_n)$,若存在一个分量$0\leq\alpha_j^\ast\leq C$,则根据KKT条件，原问题的解推倒过程如下：<br>根据KKT条件</p>
-<script type="math/tex; mode=display">
-\nabla_{w}L(w^\ast,b^\ast,\xi^\ast,\alpha^\ast,\mu^\ast)=w^\ast-\sum_{i=1}^{n}a_i^\ast y_ix_i=0\\
-\nabla_{b}L(w^\ast,b^\ast,\xi^\ast,\alpha^\ast,\mu^\ast)=\sum_{i=1}^{n}a_i^\ast y_i=0\\
-\nabla_{\xi}L(w^\ast,b^\ast,\xi^\ast,\alpha^\ast,\mu^\ast)=C-\alpha_i^\ast-\mu_i^\ast=0\\
-a^*_i*(y_i(w^*\cdot x_i+b)-1+\xi_i^\ast)=0\\
-\mu_i^\ast\xi_i^\ast=0\\
-y_i(w^*\cdot x_i+b)-1+\xi_i^\ast\geq0\\
-\xi_i^\ast\geq0\\
-\mu_i^\ast\geq0\\
-a_i^\ast\geq0,i=1\dots N\tag{9}</script><p>由条件（9）推倒，可得$w^\ast=\sum_{i=1}^{n}a_i^\ast y_ix_i$,由于存在$0&lt;\alpha_j^\ast&lt; C$，所以，$\xi_i=0,y_i(w^*\cdot x_i+b^\ast)-1=0$。<br>由此，分类超平面为</p>
-<script type="math/tex; mode=display">
-\sum_{i=1}^{N}a_iy_i(x\cdot x_i)+b^\ast=0</script><p>分类决策函数为：</p>
-<script type="math/tex; mode=display">
-f(x)=sign(\sum_{i=1}^{N}a_iy_i(x\cdot x_i)+b^\ast)</script><h2 id="线性支持向量机学习算法"><a href="#线性支持向量机学习算法" class="headerlink" title="线性支持向量机学习算法"></a>线性支持向量机学习算法</h2><p>综合前述推倒流程，可得线性支持向量机算法如下：<br>输入：$\Gamma=\{(x_1,y_1),(x_2,y_2),\dots,(x_n,y_n)\}$,其中，$x_i\in\chi\in R^n$,$y_i\in\{1,-1\}$,$i=1,\dots,N$<br>输出：分离超平面和决策函数。<br>（1）选择惩罚系数$C$,并构造求解凸二次规划问题</p>
-<script type="math/tex; mode=display">
-\max_{\alpha,\mu}=-\frac{1}{2}\sum_{i=1}^{n}\sum_{j=1}^{n}a_ia_jy_iy_jx_ix_j+\sum_{i=1}^{n}a_i\\
-s.t.\quad C\geq\alpha_i\geq0\\
-\sum_{i=1}^{n}a_iy_i=0\\</script><p>求得最优解$\alpha^\ast=(\alpha^\ast_1,\alpha^\ast_2,\alpha^\ast_3,\dots,\alpha^\ast_n)$<br>（2）计算$w^\ast=\sum_{i=1}^{n}a_i^\ast y_ix_i$<br>选择$\alpha^\ast$的一个分量$\alpha_j^\ast$,适合条件$0&lt;\alpha_j^\ast&lt;C$,计算</p>
-<script type="math/tex; mode=display">
-b^\ast=y_j-\sum_{i=1}^{n}a_i^\ast y_ix_i\cdot x_j</script><p>求得分离超平面和决策函数</p>
-<script type="math/tex; mode=display">
-\sum_{i=1}^{N}a_iy_i(x\cdot x_i)+b^\ast=0\\
-f(x)=sign(\sum_{i=1}^{N}a_iy_i(x\cdot x_i)+b^\ast)</script>
+C_\alpha(T)=C(T)+\alpha|T|</script><p>上述定义公式中，$C(T)$表示模型对训练数据的预测误差，也即模型对训练数据的拟合程度，$|T|$为叶子节点数量，表达模型的复杂程度，$|T|$越大，叶子节点越多，树模型层次越深，模型也就越复杂，在最小化损失函数的目标下，$\alpha$参数调和了模型复杂度与数据拟合程度的相互关系，$\alpha=0$时，不考虑模型复杂度，$\alpha&gt;0$时，模型越复杂，$C(T)$越小，往往对训练数据的拟合程度越好，但是模型复杂；相反地，当子树越小，模型拟合程度相对可以差一些，$C(T)$增加，但是模型复杂度降低。</p>
+<h3 id="树的剪枝算法"><a href="#树的剪枝算法" class="headerlink" title="树的剪枝算法"></a>树的剪枝算法</h3><p>输入：生成算法产生的整个树$T$，参数$\alpha$<br>输出：修剪后的子树$T_\alpha$</p>
+<ul>
+<li>1 计算每个叶子节点的经验熵</li>
+<li>2 递归地从树的叶子节点向上回缩，设一组叶子节点回缩到其父节点之前与之后的整体树分别为$T_B$与$T_A$,其对应的损失函数值分别为$C_\alpha(T_B)$与$C_\alpha(T_A)$,如果<script type="math/tex; mode=display">C_\alpha(T_A)\leq C_\alpha(T_B)</script>则进行剪枝，将父节点变成新的节点</li>
+<li>3 返回2，直到不能在继续为止，得到损失函数最小的子树$T_\alpha$</li>
+</ul>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] 李航. 统计学习方法[M]. 2012.</p>
+
       
     </div>
     
@@ -432,13 +405,13 @@ f(x)=sign(\sum_{i=1}^{N}a_iy_i(x\cdot x_i)+b^\ast)</script>
       
         <div class="post-tags">
           
+            <a href="/tags/decision-Tree/" rel="tag"># decision Tree</a>
+          
             <a href="/tags/基本概念/" rel="tag"># 基本概念</a>
           
-            <a href="/tags/线性模型/" rel="tag"># 线性模型</a>
+            <a href="/tags/决策树生成/" rel="tag"># 决策树生成</a>
           
-            <a href="/tags/svm/" rel="tag"># svm</a>
-          
-            <a href="/tags/软间隔/" rel="tag"># 软间隔</a>
+            <a href="/tags/决策树剪枝/" rel="tag"># 决策树剪枝</a>
           
         </div>
       
@@ -451,8 +424,8 @@ f(x)=sign(\sum_{i=1}^{N}a_iy_i(x\cdot x_i)+b^\ast)</script>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/05/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/06/26/decisionTree_1/" rel="next" title="决策树基本概念">
+                <i class="fa fa-chevron-left"></i> 决策树基本概念
               </a>
             
           </div>
@@ -460,10 +433,6 @@ f(x)=sign(\sum_{i=1}^{N}a_iy_i(x\cdot x_i)+b^\ast)</script>
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/29/opencv_mac/" rel="prev" title="Mac下配置opencv环境">
-                Mac下配置opencv环境 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -595,7 +564,7 @@ f(x)=sign(\sum_{i=1}^{N}a_iy_i(x\cdot x_i)+b^\ast)</script>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Support-Vector-Machine-支持向量机-2"><span class="nav-number">1.</span> <span class="nav-text">Support Vector Machine 支持向量机(2)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简述"><span class="nav-number">1.1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软间隔"><span class="nav-number">1.2.</span> <span class="nav-text">软间隔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.3.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对偶学习算法推倒"><span class="nav-number">1.4.</span> <span class="nav-text">对偶学习算法推倒</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性支持向量机学习算法"><span class="nav-number">1.5.</span> <span class="nav-text">线性支持向量机学习算法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#决策树的生成与剪枝"><span class="nav-number">1.</span> <span class="nav-text">决策树的生成与剪枝</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树的生成-1"><span class="nav-number">1.1.</span> <span class="nav-text">决策树的生成[1]</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ID3算法"><span class="nav-number">1.1.1.</span> <span class="nav-text">ID3算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C4-5生成算法"><span class="nav-number">1.1.2.</span> <span class="nav-text">C4.5生成算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策树的剪枝"><span class="nav-number">1.2.</span> <span class="nav-text">决策树的剪枝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数的定义"><span class="nav-number">1.2.1.</span> <span class="nav-text">损失函数的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树的剪枝算法"><span class="nav-number">1.2.2.</span> <span class="nav-text">树的剪枝算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">1.3.</span> <span class="nav-text">参考文献</span></a></li></ol></li></ol></div>
             
 
           </div>
